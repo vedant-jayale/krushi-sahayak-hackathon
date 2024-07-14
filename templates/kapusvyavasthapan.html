@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>कृषी सहायक</title>
+    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+   /* Navbar Styles */
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.brand-text {
+    color: red; /* or green */
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    height: 3px;
+    width: 25px;
+    background-color: #fff;
+    margin: 4px 0;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        text-align: center;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+}
+/* Active Navbar Item */
+.nav-links .active a {
+    text-decoration: underline;
+    font-weight: bold;
+    
+}
+        .container {
+            margin-top: 20px;
+            width: 80%;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 24px;
+            color: #333;
+        }
+        .header img {
+            max-width: 100%;
+            height: auto;
+        }
+        .content {
+            line-height: 1.6;
+        }
+        .content h2 {
+            font-size: 20px;
+            color: #555;
+        }
+        .content p {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .content h3 {
+            font-size: 18px;
+            color: #444;
+            margin-top: 20px;
+        }
+
+        footer {
+    background-color: #86a884;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contact-info,
+.links {
+    flex: 1;
+    margin: 0 20px;
+}
+
+.contact-info h3,
+.links h3 {
+    margin-bottom: 10px;
+}
+
+.contact-info p,
+.links ul {
+    margin: 10px 0;
+}
+
+.links ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.links ul li {
+    margin-bottom: 5px;
+}
+
+.links ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.links ul li a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="navbar-brand">
+                <img src="{{ url_for('static', filename='krushi bajar smiti -logo.jpeg') }}" alt="Krushi Utnnapa Bajar Amiti Logo" class="logo">
+                <span class="brand-text">कृषी सहायक</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">मुख्य पृष्ठ</a></li>
+                <li><a href="/about">माहिती</a></li>
+                <li><a href="/sahayata">कृषी सहायता</a></li>
+                <li><a href="/FAQ">प्रश्न-उत्तर</a></li>
+                <!-- Add more links as needed -->
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Highlight active navbar item
+        const currentLocation = location.pathname;
+        const menuItems = document.querySelectorAll('.nav-links li a');
+
+        menuItems.forEach(menuItem => {
+            if (menuItem.getAttribute('href') === currentLocation) {
+                menuItem.parentElement.classList.add('active');
+            }
+        });
+    </script>
+
+    <div class="container">
+        <div class="header">
+            <h1>कसे करावे कापूस व्यवस्थापन ???</h1>
+            <img src="{{ url_for('static', filename='kapusvyavasthapan.webp') }}" alt="kapusvyavasthapan">
+        </div>
+        <div class="content">
+            <h2>कसे करावे कापूस व्यवस्थापन ???</h2>
+            <p>मागील वर्षी बोंड अळीमुळे कपाशीचे नुकसान झाले होते. या वर्षी काही शेतकऱ्यांनी कपाशीची पेरणी केली आहे. कपाशी आणि इतर पिकांवर रोगराई परतवरून भीती वाटत आहे. कृषी विभागाच्या अधिकाऱ्यांनी तत्काळ दक्षता घेतली आहे. तरीही नागपूर राज्य परिस्थितीत चिंतेची स्थिती केली. या वर्षीच मृगशीर रशे सुरुवी, कृषी विभागाचे अधिकारी योग्य नियोजन करीत आहेत. त्यामुळे यंदाच्या पिकाला फळ धरणा व बोंड सावरण्याच्या अवस्थेत असलेल्यांना कपाशी पिकाचे योग्य व्यवस्थापन करणे गरजेचे आहे.</p>
+            
+            <h2>व्यवस्थापन कसे करावे ??</h2>
+
+            <h3>1. नियमित निरीक्षण:</h3>
+            <p>वांतर तापणार, शेतात नियमितपणे फेरो माळ्या फसव बोंडअळी, भुलकिली, तांबडी माशी यासारख्या किडींची लक्षणे तपासा. तसेच शेतात प्रतिबंधात्मक औषधांची मोठ्या प्रमाणात फवारणी टाळता येईल.</p>
+            <p>फेरोमोन ट्रॅप: फेरोमोन ट्रॅप लावून किडींच्या संख्या नियंत्रीत ठेवता येते. हे विशेष: पिंक बोंडअळीच्या नियंत्रणासाठी उपयोगी.</p>
+
+            <h3>2. एकात्मिक किड व्यवस्थापन :</h3>
+            <p>सांस्कृतिक पद्धती: पिकाची फेरपालट करा आणि सतत एकाच पिकाची लागवड टाळा, ज्यामुळे किडींची संख्या कमी होईल.</p>
+            <p>जीविक नियंत्रण: शत्रू कीड पाळण्याची खते किंवा कीड प्रतिबंधित करता येईल आणि फवारणी हानी टाळता येईल.</p>
+            <p>यांत्रिक नियंत्रण: हाताने किडी गोळा करा, विशेषत: अळीनांच्या प्राथमिक अवस्थेत.</p>
+
+            <h3>3. मृदा आरोग्य व्यवस्थापन:</h3>
+            <p>मृदा परीक्षण: पिकाच्या सुरुवातीला मृदा परीक्षण करून आवश्यक खते वापरावीत. </p>
+            <p>सेंद्रिय खते: रासायनिक खतांच्या वापराऐवजी सेंद्रिय खतांचा वापर करावा. कंपोस्ट, गोमूत्र, वर्मी कंपोस्ट इत्यादीचा वापर करावा.</p>
+
+            <h3>4. पाणी व्यवस्थापन:</h3>
+            <p>ठिबक सिंचन: ठिबक सिंचन पद्धतीने पाणी देऊन पाण्याचा योग्य वापर करावा आणि उत्पादन वाढवावे.</p>
+            <p>वाफसा: मातीची आर्द्रता तपासून योग्य प्रमाणात पाणी द्यावे. अति पाणी देण्यामुळे मुळांचे नुकसान होते.</p>
+
+            <h3>5. तण व्यवस्थापन:</h3>
+            <p>तण निवारण: नियमित तण निवारण करावे. तण काढून टाकल्याने पिकाला आवश्यक पोषक तत्त्वे मिळतात.</p>
+            <p>यांत्रिक तणनाशके: यांत्रिक तणनाशकांचा वापर करून तण नियंत्रण करावे.</p>
+
+</div>
+            <footer>
+                <div class="footer-container">
+                    <div class="contact-info">
+                        <h3>Contact Information:</h3>
+                        <p>Mobile Number: 9876543210</p>
+                        <p>Email: contact@krushibajar.com</p>
+                    </div>
+                    <div class="links">
+                        <h3>Quick Links:</h3>
+                        <ul>
+                          
+                            <li><a href="/about">माहिती</a></li>
+                            <li><a href="/sahayata">कृषी सहायता</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+

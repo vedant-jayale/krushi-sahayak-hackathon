@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>कृषी सहायक</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="navbar-brand">
+                <img src="{{ url_for('static', filename='krushi bajar smiti -logo.jpeg') }}" alt="Krushi Utnnapa Bajar Amiti Logo" class="logo">
+                <span class="brand-text">कृषी सहायक</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">मुख्य पृष्ठ</a></li>
+                <li><a href="/about">माहिती</a></li>
+                <li><a href="/sahayata">कृषी सहायता</a></li>
+                <li><a href="/FAQ">प्रश्न-उत्तर</a></li>
+                <!-- Add more links as needed -->
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Highlight active navbar item
+        const currentLocation = location.pathname;
+        const menuItems = document.querySelectorAll('.nav-links li a');
+
+        menuItems.forEach(menuItem => {
+            if (menuItem.getAttribute('href') === currentLocation) {
+                menuItem.parentElement.classList.add('active');
+            }
+        });
+    </script>
+
+
+    <div class="language-switcher">
+        <button id="marathi-button" class="active">Marathi</button>
+        <button id="hindi-button">Hindi</button>
+    </div>
+
+
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='bajar-bhav-poster1.png') }}" alt="Farmer holding mobile">
+        <p id="content">
+            आता आपल्या धान्य/पिकाचे बाजार भाव जाणून घेणे झाले अगदी सोपे. कृषी सहायक बाजार भाव ट्रॅकर अ‍ॅप्लिकेशन आपल्याला रोजच्या बाजार भावाची अचूक माहिती पुरवेल. आपल्या शेतमालाचे योग्य मूल्य मिळवा आणि आपल्या शेतीला अधिक लाभदायक बनवा.
+            आमचे अ‍ॅप्लिकेशन वापरणे खूप सोपे आहे. फक्त आपल्या पिकाचे नाव, राज्य, जिल्हा आणि बाजार निवडा आणि एकच क्लिक मध्ये मिळवा ताज्या बाजार भावांची माहिती. हे अ‍ॅप्लिकेशन शेतकऱ्यांसाठी विशेषतः तयार केलेले आहे, जेणेकरून त्यांना त्यांच्या मेहनतीचे योग्य मूल्य मिळावे.
+            शेतकऱ्यांसाठी अधिक माहितीपूर्ण आणि उपयुक्त ठरणारे हे अ‍ॅप्लिकेशन नक्कीच एक मोठी मदत ठरेल. शेतमालाचे भाव अद्ययावत ठेवून आपल्या व्यवसायात अधिक नफा कमवा. आता बाजार भाव जाणून घ्या आणि आपल्या शेतीचे नियोजन करा.
+            आपल्याला या अ‍ॅप्लिकेशन बद्दल काही शंका अथवा सूचना असल्यास, कृपया आमच्याशी संपर्क साधा. आमची टीम आपल्याला सहकार्य करण्यासाठी सदैव तत्पर आहे.
+        </p>
+    </div>
+
+    <script>
+        const marathiContent = `
+            आता आपल्या धान्य/पिकाचे बाजार भाव जाणून घेणे झाले अगदी सोपे.कृषी सहायक बाजार भाव ट्रॅकर अ‍ॅप्लिकेशन आपल्याला रोजच्या बाजार भावाची अचूक माहिती पुरवेल. आपल्या शेतमालाचे योग्य मूल्य मिळवा आणि आपल्या शेतीला अधिक लाभदायक बनवा.
+            आमचे अ‍ॅप्लिकेशन वापरणे खूप सोपे आहे. फक्त आपल्या पिकाचे नाव, राज्य, जिल्हा आणि बाजार निवडा आणि एकच क्लिक मध्ये मिळवा ताज्या बाजार भावांची माहिती. हे अ‍ॅप्लिकेशन शेतकऱ्यांसाठी विशेषतः तयार केलेले आहे, जेणेकरून त्यांना त्यांच्या मेहनतीचे योग्य मूल्य मिळावे.
+            शेतकऱ्यांसाठी अधिक माहितीपूर्ण आणि उपयुक्त ठरणारे हे अ‍ॅप्लिकेशन नक्कीच एक मोठी मदत ठरेल. शेतमालाचे भाव अद्ययावत ठेवून आपल्या व्यवसायात अधिक नफा कमवा. आता बाजार भाव जाणून घ्या आणि आपल्या शेतीचे नियोजन करा.
+            आपल्याला या अ‍ॅप्लिकेशन बद्दल काही शंका अथवा सूचना असल्यास, कृपया आमच्याशी संपर्क साधा. आमची टीम आपल्याला सहकार्य करण्यासाठी सदैव तत्पर आहे.
+        `;
+        const hindiContent = `
+            अब आपके अनाज/फसल के बाजार भाव जानना हुआ बहुत आसान।  कृषी सहायक बाजार भाव ट्रैकर ऐप्लिकेशन आपको रोज के बाजार भाव की सटीक जानकारी प्रदान करेगा। अपने फसल का सही मूल्य प्राप्त करें और अपनी खेती को अधिक लाभदायक बनाएं।
+            हमारा ऐप्लिकेशन उपयोग करना बहुत आसान है। बस अपने फसल का नाम, राज्य, जिला और बाजार चुनें और एक ही क्लिक में ताज़ा बाजार भाव की जानकारी प्राप्त करें। यह ऐप्लिकेशन किसानों के लिए विशेष रूप से बनाया गया है ताकि उन्हें उनकी मेहनत का सही मूल्य मिल सके।
+            किसानों के लिए अधिक जानकारीपूर्ण और उपयोगी साबित होने वाला यह ऐप्लिकेशन निश्चित रूप से एक बड़ी मदद साबित होगा। अपने फसल के भाव को अद्यतन रखें और अपने व्यवसाय में अधिक लाभ कमाएं। अब बाजार भाव जानें और अपनी खेती की योजना बनाएं।
+            यदि आपको इस ऐप्लिकेशन के बारे में कोई संदेह या सुझाव है, तो कृपया हमसे संपर्क करें। हमारी टीम आपको सहायता प्रदान करने के लिए हमेशा तत्पर है।
+        `;
+
+        document.getElementById('marathi-button').addEventListener('click', function() {
+            document.getElementById('content').innerHTML = marathiContent;
+            this.classList.add('active');
+            document.getElementById('hindi-button').classList.remove('active');
+        });
+
+        document.getElementById('hindi-button').addEventListener('click', function() {
+            document.getElementById('content').innerHTML = hindiContent;
+            this.classList.add('active');
+            document.getElementById('marathi-button').classList.remove('active');
+        });
+    </script>
+                </div>
+    <h1>बाजार भाव ट्रॅकर</h1>
+    <form method="post" action="/get_prices">
+        <div class="form-group">
+            <label for="commodity">धान्य/फसल:</label>
+            <select name="commodity" id="commodity" required>
+                <option value="0">--Select-- (--निवडा--)</option>
+                <option value="325">Almond (बदाम)</option>
+                <option value="17">Apple (सफरचंद)</option>
+                <option value="49">Toor (तूर)</option>
+                <option value="260">Toor (dal) (तूर (डाळ))</option>
+                <option value="28">Bajara (बाजरी)</option>
+                <option value="19">Banana (केळ)</option>
+                <option value="90">Banana (Green) (हिरवे केळ)</option>
+                <option value="157">Beetroot (बीट)</option>
+                <option value="85">Bhindi (भेंडी)</option>
+                <option value="8">Black-Gram (Udad) (काळे हरभरे (उडद))</option>
+                <option value="264">Udad dal (उडद डाळ)</option>
+                <option value="35">Brinjal (वांगी)</option>
+                <option value="154">Cabbage (कोबी)</option>
+                <option value="164">Capsicum (शिमला मिरची)</option>
+                <option value="153">Carrot (गाजर)</option>
+                <option value="26">Chili Red (लाल मिरची)</option>
+                <option value="88">Chilly Capsicum (शिमला मिरची)</option>
+                <option value="138">Coconut (नारळ)</option>
+                <option value="15">Cotton (कापूस)</option>
+                <option value="89">Cowpea (veg) (चवळी)</option>
+                <option value="158">Cucumber (Kheera) (काकडी)</option>
+                <option value="42">Cumin Seed (Jeera) (जिरे)</option>
+                <option value="168">Drumstick (शेवगा)</option>
+                <option value="278">Dry Grapes (सुके द्राक्ष)</option>
+                <option value="25">Garlic (लसूण)</option>
+                <option value="27">Ginger (Dry) (सुंठ)</option>
+                <option value="22">Grapes (द्राक्ष)</option>
+                <option value="9">Green Gram (Moong) (मूग)</option>
+                <option value="265">Green Gram Dal (Moong Dal) (मूग डाळ)</option>
+                <option value="10">Groundnut (शेंगदाणे)</option>
+                <option value="75">Guar (ग्वार)</option>
+                <option value="185">Guava (पेरू)</option>
+                <option value="74">Gur (Jaggery) (गूळ)</option>
+                <option value="182">Jack Fruit (फणस)</option>
+                <option value="229">Jasmine (जास्वंद)</option>
+                <option value="5">Jowar (Sorghum) (ज्वारी)</option>
+                <option value="362">Kabuli Chana (Chickpeas-White) (काबुली चना)</option>
+                <option value="155">Ladies Finger (भेंडी)</option>
+                <option value="171">Leafy Vegetables (पालेभाज्या)</option>
+                <option value="310">Lemon (लिंबू)</option>
+                <option value="63">Lentil (Masur) (मसूर)</option>
+                <option value="351">Litchi (लीची)</option>
+                <option value="335">Mahua (माहुआ)</option>
+                <option value="4">Maize (मका)</option>
+                <option value="20">Mango (आंबा)</option>
+                <option value="172">Mango (Raw-Ripe) (आंबा (कच्चा-पिकलेला))</option>
+                <option value="340">Mushrooms (मशरूम)</option>
+                <option value="259">Masur Dal (मसूर डाळ)</option>
+                <option value="93">Mataki (मटकी)</option>
+                <option value="46">Methi (Leaves) (मेथी पान)</option>
+                <option value="77">Mousambi (Sweet Lime) (मोसंबी)</option>
+                <option value="23">Onion (कांदा)</option>
+                <option value="358">Onion Green (हिरवा कांदा)</option>
+                <option value="18">Orange (संत्री)</option>
+                <option value="72">Papaya (पपई)</option>
+                <option value="308">Peas Cod (वाटाणा शेंगा)</option>
+                <option value="347">Peas (Dry) (सुक्या वाटाण्या)</option>
+                <option value="21">Pineapple (अननस)</option>
+                <option value="190">Pomegranate (डाळिंब)</option>
+                <option value="24">Potato (बटाटा)</option>
+                <option value="84">Pumpkin (भोपळा)</option>
+                <option value="161">Radish (मूळा)</option>
+                <option value="3">Rice (तांदूळ)</option>
+                <option value="13">Soyabean (सोयाबीन)</option>
+                <option value="48">Sugar (साखर)</option>
+                <option value="150">Sugarcane (ऊस)</option>
+                <option value="14">Sunflower (सूर्यमुखी)</option>
+                <option value="152">Sweet Potato (गोड बटाटा)</option>
+                <option value="44">Tea (चहा)</option>
+                <option value="141">Tobacco (तंबाखू)</option>
+                <option value="78">Tomato (टोमॅटो)</option>
+                <option value="39">Turmeric (हळद)</option>
+                <option value="309">Turmeric (Raw) (हळद (कच्ची))</option>
+                <option value="73">Watermelon (कलिंगड)</option>
+                <option value="1">Wheat (गहू)</option>
+            </select>
+
+            
+            <input type="hidden" name="commodity_name" value="Almond(Badam)">
+            <input type="hidden" name="commodity_name" value="Apple">
+            <input type="hidden" name="commodity_name" value="Arhar+(Tur%2fRed+Gram)(Whole)">
+            <input type="hidden" name="commodity_name" value="Arhar+Dal(Tur+Dal)">
+            <input type="hidden" name="commodity_name" value="Bajra(Pearl+Millet%2fCumbu)">
+            <input type="hidden" name="commodity_name" value="Banana">
+            <input type="hidden" name="commodity_name" value="Banana+-+Green">
+            <input type="hidden" name="commodity_name" value="Beetroot">
+            <input type="hidden" name="commodity_name" value="Bhindi(Ladies+Finger)">
+            <input type="hidden" name="commodity_name" value="Black+Gram+(Urd+Beans)">
+            <input type="hidden" name="commodity_name" value="Black+Gram+Dal+(Urd+Dal)">
+            <input type="hidden" name="commodity_name" value="Brinjal">
+            <input type="hidden" name="commodity_name" value="Cabage">
+            <input type="hidden" name="commodity_name" value="Capsicum">
+            <input type="hidden" name="commodity_name" value="Carrot">
+            <input type="hidden" name="commodity_name" value="Chili+Red">
+            <input type="hidden" name="commodity_name" value="Coconut">
+            <input type="hidden" name="commodity_name" value="Coffee">
+            <input type="hidden" name="commodity_name" value="Cotton">
+            <input type="hidden" name="commodity_name" value="Cowpea(Veg)">
+            <input type="hidden" name="commodity_name" value="Cucumbar(Kheera)">
+            <input type="hidden" name="commodity_name" value="Cummin+Seed(Jeera)">
+            <input type="hidden" name="commodity_name" value="Drumstick">
+            <input type="hidden" name="commodity_name" value="Dry+Grapes">
+            <input type="hidden" name="commodity_name" value="Garlic">
+            <input type="hidden" name="commodity_name" value="Ginger(Dry)">
+            <input type="hidden" name="commodity_name" value="Grapes">
+            <input type="hidden" name="commodity_name" value="Green+Gram+(Moong)(Whole)">
+            <input type="hidden" name="commodity_name" value="Green+Gram+Dal+(Moong+Dal)">
+            <input type="hidden" name="commodity_name" value="Groundnut">
+            <input type="hidden" name="commodity_name" value="Guar">
+            <input type="hidden" name="commodity_name" value="Guava">
+            <input type="hidden" name="commodity_name" value="Gur(Jaggery)">
+            <input type="hidden" name="commodity_name" value="Jack+Fruit">
+            <input type="hidden" name="commodity_name" value="Jowar(Sorghum)">
+            <input type="hidden" name="commodity_name" value="Jute">
+            <input type="hidden" name="commodity_name" value="Kabuli+Chana(Chickpeas-White)">
+            <input type="hidden" name="commodity_name" value="Ladies+Finger">
+            <input type="hidden" name="commodity_name" value="Leafy+Vegetable">
+            <input type="hidden" name="commodity_name" value="Lemon">
+            <input type="hidden" name="commodity_name" value="Lentil+(Masur)(Whole)">
+            <input type="hidden" name="commodity_name" value="Litchi">
+            <input type="hidden" name="commodity_name" value="Maize">
+            <input type="hidden" name="commodity_name" value="Mango">
+            <input type="hidden" name="commodity_name" value="Mango+(Raw-Ripe)">
+            <input type="hidden" name="commodity_name" value="Mashrooms">
+            <input type="hidden" name="commodity_name" value="Masur+Dal">
+            <input type="hidden" name="commodity_name" value="Mataki">
+            <input type="hidden" name="commodity_name" value="Methi(Leaves)">
+            <input type="hidden" name="commodity_name" value="Mint(Pudina)">
+            <input type="hidden" name="commodity_name" value="Mousambi(Sweet+Lime)">
+            <input type="hidden" name="commodity_name" value="Onion">
+            <input type="hidden" name="commodity_name" value="Onion+Green">
+            <input type="hidden" name="commodity_name" value="Orange">
+            <input type="hidden" name="commodity_name" value="Peas+cod">
+            <input type="hidden" name="commodity_name" value="Peas(Dry)">
+            <input type="hidden" name="commodity_name" value="Pomegranate">
+            <input type="hidden" name="commodity_name" value="Potato">
+            <input type="hidden" name="commodity_name" value="Pumpkin">
+            <input type="hidden" name="commodity_name" value="Raddish">
+            <input type="hidden" name="commodity_name" value="Rice">
+            <input type="hidden" name="commodity_name" value="Soyabean">
+            <input type="hidden" name="commodity_name" value="Sugarcane">
+            <input type="hidden" name="commodity_name" value="Sunflower">
+            <input type="hidden" name="commodity_name" value="Sweet+Potato">
+            <input type="hidden" name="commodity_name" value="Tea">
+            <input type="hidden" name="commodity_name" value="Tobaco">
+            <input type="hidden" name="commodity_name" value="Tomato">
+            <input type="hidden" name="commodity_name" value="Turmeric">
+            <input type="hidden" name="commodity_name" value="Turmeric+(raw)">
+            <input type="hidden" name="commodity_name" value="Water+Melon">
+            <input type="hidden" name="commodity_name" value="Wheat">
+             
+
+        </div>
+
+
+        <div class="form-group">
+            <label for="state">राज्य:</label>
+            <select name="state" id="state" required>
+                <option value="0">--Select--</option>
+                <option value="MH" selected>Maharashtra</option>
+               
+            </select>
+            <input type="hidden" name="state_name" value="Maharashtra">
+        </div>
+        <div class="form-group">
+            <label for="district">जिल्हा:</label>
+            <select name="district" id="district" required>
+                <option value="0">--Select--</option>
+                <option value="1">Ahmednagar (अहमदनगर)</option>
+                <option value="2">Akola (अकोला)</option>
+                <option value="3">Amravati (अमरावती)</option>
+                <option value="19">Aurangabad (औरंगाबाद)</option>
+                <option value="21">Beed (बीड)</option>
+                <option value="22">Bhandara (भंडारा)</option>
+                <option value="4">Buldhana (बुलढाणा)</option>
+                <option value="23">Chandrapur (चंद्रपूर)</option>
+                <option value="5">Dhule (धुळे)</option>
+                <option value="24">Gadchiroli (गडचिरोली)</option>
+                <option value="34">Gondia (गोंदिया)</option>
+                <option value="35">Hingoli (हिंगोली)</option>
+                <option value="7">Jalgaon (जळगाव)</option>
+                <option value="6">Jalna (जालना)</option>
+                <option value="8">Kolhapur (कोल्हापूर)</option>
+                <option value="9">Latur (लातूर)</option>
+                <option value="10">Mumbai City (मुंबई शहर)</option>
+                <option value="11">Nagpur (नागपूर)</option>
+                <option value="25">Nanded (नांदेड)</option>
+                <option value="12">Nandurbar (नंदुरबार)</option>
+                <option value="13">Nashik (नाशिक)</option>
+                <option value="36">Osmanabad (उस्मानाबाद)</option>
+                <option value="27">Parbhani (परभणी)</option>
+                <option value="14">Pune (पुणे)</option>
+                <option value="28">Raigad (रायगड)</option>
+                <option value="29">Ratnagiri (रत्नागिरी)</option>
+                <option value="15">Sangli (सांगली)</option>
+                <option value="30">Satara (सातारा)</option>
+                <option value="31">Sindhudurg (सिंधुदुर्ग)</option>
+                <option value="16">Solapur (सोलापूर)</option>
+                <option value="17">Thane (ठाणे)</option>
+                <option value="18">Wardha (वर्धा)</option>
+                <option value="33">Washim (वाशिम)</option>
+                <option value="32">Yavatmal (यवतमाळ)</option>
+            </select>
+           
+            <input type="hidden" name="district_name" value="Ahmednagar">
+           <input type="hidden" name="district_name" value="Akola">
+           <input type="hidden" name="district_name" value="Amarawati">
+           <input type="hidden" name="district_name" value="Chattrapati+Sambhajinagar">
+           <input type="hidden" name="district_name" value="Beed">
+          <input type="hidden" name="district_name" value="Bhandara">
+          <input type="hidden" name="district_name" value="Buldhana">
+          <input type="hidden" name="district_name" value="Chandrapur">
+          <input type="hidden" name="district_name" value="Dhule">
+          <input type="hidden" name="district_name" value="Gadchiroli">
+          <input type="hidden" name="district_name" value="Gondia">
+         <input type="hidden" name="district_name" value="Hingoli">
+          <input type="hidden" name="district_name" value="Jalgaon">
+          <input type="hidden" name="district_name" value="Jalna">
+          <input type="hidden" name="district_name" value="Kolhapur">
+         <input type="hidden" name="district_name" value="Latur">
+        <input type="hidden" name="district_name" value="Mumbai">
+       <input type="hidden" name="district_name" value="Nagpur">
+       <input type="hidden" name="district_name" value="Nanded">
+       <input type="hidden" name="district_name" value="Nandurbar">
+        <input type="hidden" name="district_name" value="Nashik">
+        <input type="hidden" name="district_name" value="Osmanabad">
+        <input type="hidden" name="district_name" value="Parbhani">
+        <input type="hidden" name="district_name" value="Pune">
+        <input type="hidden" name="district_name" value="Raigad">
+        <input type="hidden" name="district_name" value="Ratnagiri">
+        <input type="hidden" name="district_name" value="Sangli">
+        <input type="hidden" name="district_name" value="Satara">
+        <input type="hidden" name="district_name" value="Sindhudurg">
+        <input type="hidden" name="district_name" value="Sholapur">
+        <input type="hidden" name="district_name" value="Thane">
+        <input type="hidden" name="district_name" value="Wardha">
+        <input type="hidden" name="district_name" value="Vashim">
+        <input type="hidden" name="district_name" value="Yavatmal">
+        </div>
+
+
+        <div class="form-group">
+            <label for="market">बाजार/मंडी:</label>
+        
+                <select name="market" id="markets" required>
+                    <option value="0">--Select--</option>
+
+                    <!-- 1.Ahamadnagar markets (mandi)-->
+                    <option value="153" style="font-weight: bold; color: red; background-color: #f8eeee;">Ahmednagar (अहमदनगर)</option>
+                    <option value="1766">Akole (अकोले)</option>
+                    <option value="1430">Jamkhed (जामखेड)</option>
+                    <option value="1446">Karjat (कर्जत)</option>
+                    <option value="1447">Karjat (Rashin) (कर्जत (राशीन))</option>
+                    <option value="1431">Kopargaon (कोपरगाव)</option>
+                    <option value="1821">Newasa (नेवासा)</option>
+                    <option value="3115">Newasa (Ghodegaon) (नेवासा (घोडेगाव))</option>
+                    <option value="10108">Om Chaityanya Multistate Agro Purpose CoOp Socity (ओम चैतन्य बहुउद्देशीय कृषी सहकारी संस्था)</option>
+                    <option value="2072">Parner (पारनेर)</option>
+                    <option value="1432">Pathardi (पाथर्डी)</option>
+                    <option value="10086">Prasanna Krushi Market (प्रसन्न कृषी मार्केट)</option>
+                    <option value="2382">Rahata (राहाता)</option>
+                    <option value="1803">Rahuri (राहुरी)</option>
+                    <option value="3114">Rahuri (Songaon) (राहुरी (सोंगाव))</option>
+                    <option value="2475">Rahori (Vamburi) (राहोरी (वांबुरी))</option>
+                    <option value="848">Sangamner (संगमनेर)</option>
+                    <option value="2476">Sheogaon (Bodhegaon) (शेवगाव (बोधेगाव))</option>
+                    <option value="10107">Shree Sairaj Krushi Market (श्री सैराज कृषी मार्केट)</option>
+                    <option value="1434">Shrigonda (श्रीगोंदा)</option>
+                    <option value="3116">Shrigonda (Gogargaon) (श्रीगोंदा (गोगारगाव))</option>
+                    <option value="1434">Shrigonda (श्रीगोंदा)</option>
+                    <option value="1435">Shrirampur (श्रीरामपूर)</option>
+                    <option value="2477">Shrirampur (Belapur) (श्रीरामपूर (बेलापूर))</option>
+
+                      <!-- 2.Akola markets (mandi)-->
+
+                      <option value="154" style="font-weight: bold; color: red; background-color: #f8eeee;">Akola (अकोला)</option>
+                      <option value="4749">Akola (Borgaon Manju) (अकोला (बोरगाव मंजू))</option>
+                      <option value="1350">Akot (अकोट)</option>
+                      <option value="1476">Balapur (बलापूर)</option>
+                      <option value="2094">Barshi Takli (बार्शी टाकळी)</option>
+                      <option value="10092">वसंतरावजी दंडाले खाजगी कृषी बाजार</option>
+                      <option value="594">Murtijapur (मूर्तिजापूर)</option>
+                      <option value="2095">Patur (पातूर)</option>
+                      <option value="10088">श्री गजानन महाराज खाजगी कृषी उत्पन्न बाजार समिती </option>
+                      <option value="1477">Telhara (तेल्हारा)</option> 
+
+                      
+                        <!-- 3.Amravati markets (mandi)-->
+                      
+                    <option value="155" style="font-weight: bold; color: red; background-color: #f8eeee;">Amravati (अमरावती)</option> 
+                      <option value="595">Achalpur (अचलपुर)</option>
+                      <option value="596">Anjangaon (अंजनगांव)</option>
+                      <option value="1478">Chandur Bazar (चांदूर बाजार)</option>
+                      <option value="2096">Chandur Railway (चांदूर रेल्वे)</option>
+                      <option value="1809">Daryapur (दर्यापूर)</option>
+                      <option value="1810">Dhamangaon (धामणगाव)</option>
+                      <option value="1479">Morshi (मोर्शी)</option>
+                      <option value="2098">Nandgaon Khandeshwar (नांदगाव खंडेश्वर)</option>
+                      <option value="1480">Warud (वरुड)</option>
+                      <option value="2504">Warud Razura-Bajar (वरुड)</option>
+                      <option value="2099">Teosa (तेसा)</option>
+                      <option value="2097">Dharni </option>
+                    
+                        
+                        <!-- 4.Chatrapati Sambhaji Nagar markets (mandi)--> 
+
+                        <option value="581" style="font-weight: bold; color: red; background-color: #f8eeee;">Sambhajinagar (छत्रपती संभाजीनगर)</option>
+                        <option value="1470">Lasur Station </option>
+                        <option value="10072">Kisan seva private Market (जालना)</option>
+                        <option value="10059">Maharashtra Agricultural Farm </option>
+                        <option value="1469">Kannad (कन्नड)</option>
+                        <option value="2387">Khuldabad (खुल्दाबाद)</option>
+                        <option value="1817">Paithan (पैठण)</option>
+                        <option value="582">Sillod (सिल्लोड)</option>
+                        <option value="2499">Sillod -bharadi(सिल्लोड-bharadi)</option>
+                        <option value="2386">Soyagaon (सॉयगाव)</option>
+                        <option value="1471">Vaijapur (वैजापूर)</option>
+                        <option value="1468">Gangapur (गंगापूर)</option>
+                        <option value="10109">Bagyoday cotton and agri market </option>
+                        <option value="2084">Fulmbri </option>
+                        
+
+                             <!-- 4.Beed  markets (mandi)--> 
+
+                        <option value="583" style="font-weight: bold; color: red; background-color: #f8eeee;">Beed (बीड)</option>
+                        <option value="1513">Ambejogai (अंबेजोगाई)</option>
+                        <option value="10096">Madhavrao Pawar Krushi Uttpna Bajar Samiti </option>
+                        <option value="3966">Ashti (आष्टी)</option>
+                        <option value="1515">Kada </option>
+                        <option value="2122">Dharur (धारूर)</option>
+                        <option value="1514">Gevrai (गेवराई)</option>
+                        <option value="1517">Kaij (कज)</option>
+                        <option value="1829">Majalgaon (माजलगाव)</option>
+                        <option value="1516">Parli (परळी)</option>
+                        <option value="2123">Patoda (पाटोदा)</option>
+                        <option value="3970">vadvani (वडवणी)</option>
+
+
+                        <!--5.Bhandara -->
+
+                        <option value="1351" style="font-weight: bold; color: red; background-color: #f8eeee;">Bhandara (भंडारा)</option>
+                        <option value="1496">Lakhandur (लाखंडूर)</option>
+                        <option value="1170">Tumsar (तुमसर)</option>
+                        <option value="1497">Lakhanni </option>
+                        <option value="1814">Pavani</option>
+                        
+                       <!--6.Buldhana -->
+
+                        <option value="2507" style="font-weight: bold; color: red; background-color: #f8eeee;">Buldhana (बुलढाणा)</option>
+                        <option value="2101">Buldhana Dhad</option>
+                        <option value="597">Chikhli (चिखली)</option>
+                        <option value="10060">Dand Brother Agro</option>
+                        <option value="1818">Deulgaon Raja (देउलगांव राजा)</option>
+                        <option value="10091">Deulgaon Raja-Balaji-Agro (देउलगांव राजा)</option>
+                        <option value="598">Jalgaon Jamod (जळगाव जामोद)</option>
+                        <option value="2505">Jalgaon asalgaon (जळगाव )</option>
+                        <option value="156">Khamgaon (खामगाव)</option>
+                        <option value="1481">Lonar (लोणार)</option>
+                        <option value="599">Malkapur (मालकापूर)</option>
+                        <option value="1482">Mehkar (मेहकर)</option>
+                        <option value="1483">Nandura (नंदुरा)</option>
+                        <option value="1484">Sangrampur (सांगरामपूर)</option>
+                        <option value="1485">Shegaon (शेगांव)</option>
+                        <option value="2102">Sindkhed Raja (सिंदखेड राजा)</option>
+                        <option value="10105">ACF-Agro-Marketing </option>
+                        <option value="10093">BSK Krushi Bajar Private.Ltd </option>
+
+
+                         <!--7.Chandrapur -->
+
+                        <option value="605" style="font-weight: bold; color: red; background-color: #f8eeee;">Chandrapur (चंद्रपूर)</option>
+                         <option value="2113">Bhadravati (भद्रवती)</option>
+                         <option value="1498">Brahmapuri (ब्रह्मापुरी)</option>
+                         <option value="1502">Gondpipri (गोंदपिपरी)</option>
+                         <option value="1500">Mul (मुल)</option>
+                         <option value="4758">Pombhurna (पोंभूर्णा)</option>
+                         <option value="1812">Warora (वारोरा)</option>
+                         <option value="1499">Chimur</option>
+                         <option value="2114">korpana </option>
+                         <option value="1501">Nagbhid</option>
+                         <option value="2111">Rajuara </option>
+                         <option value="1503">Savali </option>
+                         <option value="2112">Sindevahi</option>
+                          
+                           <!--7.Usmanabad (Dharashiv) -->
+
+                         <option value="1828" style="font-weight: bold; color: red; background-color: #f8eeee;">Usmanabad-Dharashiv (धराशिव)</option> 
+                         <option value="2137">Bhoom</option>
+                         <option value="1224">Ambajogai (अंबाजोगाई)</option>
+                         <option value="1828">Kalamb (Dharashiv)(धराशिव)</option>
+                         <option value="2396">Washi(Dharashiv)</option>
+                         <option value="2140">Umarga</option>
+                         <option value="2395">Lohara (लोहारा)</option>
+                         <option value="2139">Tuljapur</option>
+                         <option value="2138">Paranda </option>
+
+                          <!--8.Dhule  -->
+
+                         <option value="157" style="font-weight: bold; color: red; background-color: #f8eeee;">Dhule (धुळे)</option>
+                         <option value="1436">Sakri (साकरी)</option>
+                         <option value="1437">Shirpur (शिरपूर)</option>
+                         <option value="2478">Sindkheda (सिंदखेडा)</option>
+                         <option value="569">Dondaicha (दोंदईचा)</option>
+                         <option value="10117">Pratapji Mahalle Krushi Bajar samiti</option>
+                         <option value="10112">Janata Agri Market   (पिंपळणेर)</option>
+                        
+                          <!--9.Gadchiroli  -->
+
+                          <option value="606" style="font-weight: bold; color: red; background-color: #f8eeee;">Gadchiroli (गडचिरोली)</option>
+                          <option value="1813">Armori (आरमोरी)</option>
+                          <option value="2115">Aheri</option>
+                          <option value="1819">Chamorshi (चामोर्शी)</option>
+                          <option value="2511">Desaiganj (देसायगंज)</option>
+                          <option value="4766">Sironcha (सिरोंचा)</option>
+
+                            <!--10.Gondia  -->
+
+                            <option value="1511" style="font-weight: bold; color: red; background-color: #f8eeee;">Gondia (गोंदिया)</option>
+                            <option value="603">Amgaon (आमगाव)</option>
+                            <option value="4762">Deori (देवरी)</option>
+                            <option value="2121">Goregaon (गोरेगाव)</option>
+                            <option value="4761">Sadak Arjuni (सडक अर्जुनी)</option>
+                            <option value="1512">Tiroda (तिरोडा)</option>
+                            <option value="604">Arjuni </option>
+
+                             <!--11.Hingoli  -->
+                             
+                             <option value="590" style="font-weight: bold; color: red; background-color: #f8eeee;">Hingoli (हिंगोली)</option>
+                             <option value="1255">Aundha (औंधा)</option>
+                             <option value="2091">Basmath (बसमत)</option>
+                             <option value="1830">Kalamnuri (कळमनूरी)</option>
+                             <option value="2092">Sengaon (सेंगाव)</option>
+                             <option value="2090">Akhadabalapur</option>
+                             <option value="10073">Vitthal Krushi Uttpana Bajar Samiti</option>
+
+
+                             <!--12.Jalna  -->
+
+                             <option value="158" style="font-weight: bold; color: red; background-color: #f8eeee;">Jalna (जालना)</option>
+                             <option value="1822">Ambad (अंबड)</option>
+                             <option value="584">Bhokardan (भोकरदान)</option>
+                             <option value="2389">Ghansawangi (घानसवंगी)</option>
+                             <option value="4755">Jafferabad (जाफराबाद)</option>
+                             <option value="2085">Mantha (मांथा)</option>
+                             <option value="1472">Partur (परटूर)</option>
+                             <option value="2501">Badnapur (बडनापुर)</option>
+
+                            
+                              <!--13.Jalgaon  -->
+
+                              <option value="159" style="font-weight: bold; color: red; background-color: #f8eeee;">Jalgaon (जळगाव)</option>
+                              <option value="570">Amalner (अमलनेर)</option>
+                              <option value="1438">Bhusawal (भुसावळ)</option>
+                              <option value="571">Chalisgaon (चाळीसगाव)</option>
+                              <option value="572">Chopda (चोपडा)</option>
+                              <option value="1440">Dharangaon (धरणगांव)</option>
+                              <option value="573">Pachora (पचोरा)</option>
+                              <option value="1443">Parola (परोळा)</option>
+                              <option value="1439">Bodwad (बोदवाड)</option>
+                              <option value="1444">Raver (रावेर)</option>
+                              <option value="1445">Yawal (यावळ)</option>
+
+                              <!-- 14.Kolhapur-->
+
+                             <option value="160" style="font-weight: bold; color: red; background-color: #f8eeee;">Kolhapur (कोल्हापूर)</option>             
+                              <option value="1453">Vedgaonpeth</option>
+                              <option value="1451">Gadhinglaj (गढिंगळज)</option>
+                              <option value="1452">Jaysingpur</option>
+                              <option value="2489">Laxmipuri</option>
+                              <option value="2490">Malkapur</option>
+                              
+                             
+                                     <!-- 15.Latur-->
+
+                             <option value="161" style="font-weight: bold; color: red; background-color: #f8eeee;">Latur (लातूर)</option>
+                              <option value="1825">Ahmadpur (अहमदपुर)</option>
+                              <option value="2124">Ausa (औसा)</option>
+                              <option value="2126">Chakur (चाकुर)</option>
+                              <option value="4757">Deoni (देवनी)</option>
+                              <option value="3112">Jalkot (जाळकोट)</option>
+                              <option value="2125">Nilanga (निलंगा)</option>
+                              <option value="2128">Renapur (रेणापुर)</option>
+                              <option value="2392">Shirur Anantpal (शिरूर अनंतपाल)</option>
+                              <option value="586">Udgir (उदगीर)</option>
+                              <option value="2127">Aurad Shahajani</option>
+
+
+                                <!-- 16.mumbai-->
+
+                                <option value="2473" style="font-weight: bold; color: red; background-color: #f8eeee;">Mumbai - Fruit Market (मुंबई - Fruit मार्केट)</option>
+                                <option value="2379">All India Cottonseed Crushers Association, Mumbai (ऑल इंडिया कॉटनसीड क्रशर्स असोसिएशन, मुंबई)</option>
+                                <option value="2472">Mumbai - Thane Market (मुंबई - ठाणे मार्केट)</option>
+                                <option value="3108">Vashi, New Mumbai (वाशी, नवी मुंबई)</option>
+
+
+                                 <!--17.Nanded-->
+
+                                 <option value="589" style="font-weight: bold; color: red; background-color: #f8eeee;">Nanded (नांदेड)</option>
+                                 <option value="587">Bhokar (भोकर)</option>
+                                 <option value="2136">Biloli (बिलोली)</option>
+                                 <option value="588">Deglur (देगलूर)</option>
+                                 <option value="1349">Dharmabad (धर्माबाद)</option>
+                                 <option value="1518">Hadgaon (हडगांव)</option>
+                                 <option value="2393">Hanegaon</option>
+                                 <option value="2133">Himalyatnagar</option>
+                                 <option value="2394">Islapur</option>
+                                 <option value="1519">Kandhar (कंद्हार)</option>
+                                 <option value="2129">Kinwat (किंवत)</option>
+                                 <option value="1829">Kundalwadi</option>
+                                 <option value="2135">Kuntur</option>
+                                 <option value="1520">Loha (लोहा)</option>
+                                 <option value="2134">Mahoor (महूर)</option>
+                                 <option value="2130">Mudkhed (मुडखेड)</option>
+                                 <option value="2131">Mukhed (मुखेड)</option>
+                                 <option value="2132">Umari (उमरी)</option>
+
+                                   <!--18.Nandurbar-->
+
+                                   <option value="165" style="font-weight: bold; color: red; background-color: #f8eeee;">Nandurbar (नंदूरबार)</option>
+                                   <option value="2076">Akkalkuwa</option>
+                                   <option value="2074">Navapur (नवापूर)</option>
+                                   <option value="1450">Shahada (शहादा)</option>
+                                   <option value="2075">Taloda (तालोदा)</option>
+                                   <option value="2384">Dhadgaon (धडगाव)</option>
+                                   <option value="3961">Nandurbar (koparli)</option>
+
+
+                                     <!--19.Nagpur--> 
+                                     
+                                     <option value="163" style="font-weight: bold; color: red; background-color: #f8eeee;">Nagpur Market (नागपूर मार्केट)</option>
+                                     <option value="107">Aajni (आजीनी)</option>
+                                     <option value="1504">Bhiwapur (भीवापुर)</option>
+                                     <option value="4754">Hingna (हिंगना)</option>
+                                     <option value="1505">Kalameshwar (कलमेश्वर)</option>
+                                     <option value="1506">Katol (काटोल)</option>
+                                     <option value="3972">Kamptee (कामठी)</option>
+                                     <option value="1507">Narkhed (नरखेड)</option>
+                                     <option value="2118">Parseoni (पारशिवनी)</option>
+                                     <option value="2117">Ramtek (रामटेक)</option>
+                                     <option value="607">Savner (सावनेर)</option>
+                                     <option value="164">Umred (उमरेड)</option>
+                                     <option value="2116">Mandhal</option>
+                                     <option value="4763">Mauda</option>
+
+
+                                     <!--20.Nahik-->
+
+                                      <option value="168" style="font-weight: bold; color: red; background-color: #f8eeee;">Nashik (नाशिक)</option>
+                                     <option value="2073">Deola (देवळा)</option>
+                                     <option value="1449">Dindori (दिंडोरी)</option>
+                                     <option value="1447">Kalwan (कळवण)</option>
+                                     <option value="166">Malegaon (मालेगाव)</option>
+                                     <option value="1448">Nandgaon (नांदगाव)</option>
+                                     <option value="1801">Satana</option>
+                                     <option value="1815">Sinnar (सिन्नर)</option>
+                                     <option value="2383">Surgana (सुरगाणा)</option>
+                                     <option value="167">Yeola (येवला)</option>
+                                     <option value="171">Basavant </option>
+                                     <option value="574">Chandvad </option>
+                                     <option value="1826">Ghoti</option>
+                                     <option value="169">Lasalgaon</option>
+                                     <option value="575">Manmad</option>
+                                     <option value="1764">Nampur</option>
+                                     <option value="170">Pimpalgaon</option>
+
+                                     <!--20.Parbhani-->
+
+                                     <option value="592" style="font-weight: bold; color: red; background-color: #f8eeee;">Parbhani (परभणी)</option>
+                                     <option value="2087">Pathri (पाथरी)</option>
+                                     <option value="591">Jintur (जिंतूर)</option>
+                                     <option value="1475">Selu (सेलू)</option>
+                                     <option value="1473">Gangakhed (गंगाखेड)</option>
+                                     <option value="1474">Manwath (माणवट)</option>
+                                     <option value="1390">Sonpeth (सोनपेठ)</option>
+                                     <option value="2086">Purna (पूर्णा)</option>
+                                     <option value="4765">Bori</option>
+                                     <option value="2089">Palam</option>
+                                     <option value="4759">Sirsam</option>
+                                     <option value="2028">Tadkals</option>
+                                              
+
+
+                                     <!--21.Pune--> 
+
+                                     <option value="172" style="font-weight: bold; color: red; background-color: #f8eeee;">Pune (पुणे)</option>                                                                    
+                                     <option value="576">Baramati (बारामती)</option>
+                                     <option value="2077">Bhor (भोर)</option>
+                                     <option value="1454">Daund (दौंड)</option>
+                                     <option value="1171">Indapur (इंदापूर)</option>
+                                     <option value="1455">Junnar (जुन्नर)</option>
+                                     <option value="173">Khed (खेड)</option>
+                                     <option value="2493">Khed (chakan)</option>
+                                     <option value="577">Manchar</option>
+                                     <option value="2385">Mulshi (मुळशी)</option>
+                                     <option value="1827">Shirur (शिरूर)</option>
+                                     <option value="1456">Nira</option>
+
+                                     <!--22.Raigad-->
+                                                         
+                                     <option value="1424" style="font-weight: bold; color: red; background-color: #f8eeee;">Alibag (अलीबाग)</option>
+                                     <option value="1425">Karjat (कर्जत)</option>
+                                     <option value="2062">Khalapur (खालापुर)</option>
+                                     <option value="2063">Mahad (महाड)</option>
+                                     <option value="2064">Mangaon (माणगांव)</option>
+                                     <option value="185">Mhasla (म्हसळा)</option>
+                                     <option value="2065">Murud (मुरुड)</option>
+                                     <option value="1799">Panvel (पनवेल)</option>
+                                     <option value="2066">Pen (पेण)</option>
+                                     <option value="1426">Roha (रोहा)</option>
+                                     
+
+                                       <!--23.Ratnagiri(Nachane)-->
+
+                                       <option value="1823" style="font-weight: bold; color: red; background-color: #f8eeee;">Ratnagiri (रत्नागिरी)(nachane)</option>
+
+                                       <!--24.Sangli-->
+                                        
+                                       <option value="174">Sangli (सांगली)</option>
+                                       <option value="2079">Atpadi (आतपाडी)</option>
+                                       <option value="1457">Islampur (इस्लामपूर)</option>
+                                       <option value="3117">Miraj (मिरज)</option>
+                                       <option value="2081">Palus (पालूस)</option>
+                                       <option value="4756">Shirala (शिराला)</option>
+                                       <option value="1811">Tasgaon (तासगाव)</option>
+                                       <option value="2080">Vita (विटा)</option>
+                                                                        
+
+                                               <!--25.Satara-->
+
+                                             <option value="1462" style="font-weight: bold; color: red; background-color: #f8eeee;">Satara (सातारा)</option>
+                                             <option value="1458">Dahiwadi Market (दहिवडी मार्केट)</option>
+                                              <option value="2082">Jaoli (जावळी)</option>
+                                               <option value="1459">Karad (कराड)</option>
+                                               <option value="1460">Koregaon (कोरेगाव)</option>
+                                               <option value="1831">Patan (पाटण)</option>
+                                               <option value="1461">Phaltan (फळतण)</option>
+                                               <option value="1464">Wai (वाई)</option>
+                                               <option value="1463">Vaduj (वडुज)</option>
+                                               <option value="578">Lonand (लोणंड)</option>
+
+                                            <!--26.Solapur -->
+
+                                            <option value="176" style="font-weight: bold; color: red; background-color: #f8eeee;">Solapur (सोलापूर)</option>
+                                            <option value="1805">Akkalkot (अक्कलकोट)</option>
+                                            <option value="1806">Akluj Market (अकलूज मार्केट)</option>
+                                            <option value="175">Barshi (बार्शी)</option>
+                                            <option value="1465">Karmala (करमळा)</option>
+                                            <option value="1467">Mangalwedha (मंगळवेडा)</option>
+                                            <option value="2083">Mohol (मोहोल)</option>
+                                            <option value="579">Pandharpur (पंढरपूर)</option>
+                                            <option value="580">Sangola (सांगोला)</option>
+                                            <option value="3971">Dudhani</option>
+                                            <option value="1466">Kuradwadi</option>
+
+
+                                            <!--27.Sindhudurg-->
+                                            <option value="2070" style="font-weight: bold; color: red; background-color: #f8eeee;">Sindhudurg (सिंधुदुर्ग)</option>
+
+                                            <!--28.Thane-->
+
+                                            <option value="2472" style="font-weight: bold; color: red; background-color: #f8eeee;">Mumbai - Thane Market (मुंबई - ठाणे मार्केट)</option>
+                                            <option value="1427">Bhiwandi (भिवंडी)</option>
+                                            <option value="2067">Murbad (मुरबाड)</option>
+                                            <option value="177">Kalyan (कल्याण)</option>
+                                            <option value="2069">Shahapur (शाहापूर)</option>
+                                            <option value="1429">Ulhasnagar (उल्हासनगर)</option>
+                                            <option value="1428">Vasai (वसई)</option>
+                                            <option value="2071">Dahanu</option>
+                                            <option value="2068">Palghar</option>
+
+                                               <!--29.Washim-->
+                                               <option value="1800" style="font-weight: bold; color: red; background-color: #f8eeee;">Washim (वाशिम)</option>
+                                               <option value="10113">Jay Gajanan krushi bajar samiti</option>
+                                               <option value="593">Karanja</option>
+                                               <option value="2110">Malegaon (मालेगाव)</option>
+                                               <option value="1492">Mangrulpir (मंगरूलपीर)</option>
+                                               <option value="1494">Risod (रिसोड)</option>
+                                               <option value="1493">Manora</option>
+                                               
+
+                                               <!--30.Wardha-->
+                                               <option value="1804" style="font-weight: bold; color: red; background-color: #f8eeee;">Wardha (वर्धा)</option>
+                                               <option value="1508">Arvi (अर्वी)</option>
+                                               <option value="2119">Ashti (आष्टी)</option>
+                                               <option value="178">Hinganghat (हिंगणघाट)</option>
+                                               <option value="1509">Pulgaon (पुलगाव)</option>
+                                               <option value="1510"> Sindi</option>
+                                               <option value="3969"> Sindi Seloo (सेलू)</option>
+                                               <option value="2120">Samudrapur</option>
+
+
+                                               <!--31.Yavatmal-->
+                                               
+                                               <option value="602" style="font-weight: bold; color: red; background-color: #f8eeee;">Yavatmal (यवतमाळ)</option>
+                                               <option value="2391">Arni (अरनी)</option>
+                                               <option value="2107">Babulgaon (बाबुलगाव)</option>
+                                               <option value="1486">Darwha (दारवा)</option>
+                                               <option value="600">Digras (डिग्रस)</option>
+                                               <option value="1487">Ghatanji (घाटांजी)</option>
+                                               <option value="2109">Kalamb (कलंब)</option>
+                                               <option value="1488">Mahagaon (महागाव)</option>
+                                               <option value="2105">Ner (नेर)</option>
+                                               <option value="1490">Pusad (पुसड)</option>
+                                               <option value="2106">Ralegaon (रालेगांव)</option>
+                                               <option value="1491">Umarkhed (उमरखेड)</option>
+                                               <option value="601">vani (वणी)</option>
+                                               
+                    
+
+              </select>
+            <!--ahmednagar-->
+            <input type="hidden" name="market_name" value="Ahmednagar">
+            <input type="hidden" name="market_name" value="Akole">
+            <input type="hidden" name="market_name" value="Jamkhed">
+            <input type="hidden" name="market_name" value="Karjat">
+            <input type="hidden" name="market_name" value="Karjat(Rashin)">
+            <input type="hidden" name="market_name" value="Kopargaon">
+            <input type="hidden" name="market_name" value="Newasa">
+            <input type="hidden" name="market_name" value="Newasa(Ghodegaon)">
+            <input type="hidden" name="market_name" value="Parner">
+            <input type="hidden" name="market_name" value="Pathardi">
+            <input type="hidden" name="market_name" value="Rahata">
+            <input type="hidden" name="market_name" value="Rahuri">
+            <input type="hidden" name="market_name" value="Sangamner">
+            <input type="hidden" name="market_name" value="Rahuri">
+            <input type="hidden" name="market_name" value="Shevgaon">
+            <input type="hidden" name="market_name" value="Shrigonda">
+            <input type="hidden" name="market_name" value="Shrirampur">
+            <input type="hidden" name="market_name" value="Shrigonda(Gogargaon)">
+            <input type="hidden" name="market_name" value="Shree+Sairaj+Krushi+Market">
+            <input type="hidden" name="market_name" value="Rahuri(Songaon)">
+            <input type="hidden" name="market_name" value="Om+Chaitanya+Multistate+Agro+Purpose+CoOp+Society+">
+            <input type="hidden" name="market_name" value="Prasanna+Krushi+Market">
+            <input type="hidden" name="market_name" value="Rahuri(Vambori)">
+            <input type="hidden" name="market_name" value="Shrirampur(Belapur)">
+
+             <!-- Amravati -->
+     
+     <input type="hidden" name="market_name" value="Amarawati">
+     <input type="hidden" name="market_name" value="Amrawati(Frui+%26+Veg.+Market)">
+     <input type="hidden" name="market_name" value="Achalpur">
+     <input type="hidden" name="market_name" value="Anajngaon">
+     <input type="hidden" name="market_name" value="Chandur+Railway">
+     <input type="hidden" name="market_name" value="Chandur+Bazar">
+     <input type="hidden" name="market_name" value="Dhamngaon-Railway">
+     <input type="hidden" name="market_name" value="Dharni">
+     <input type="hidden" name="market_name" value="Morshi">
+     <input type="hidden" name="market_name" value="Daryapur">
+     <input type="hidden" name="market_name" value="Nandgaon+Khandeshwar">
+     <input type="hidden" name="market_name" value="Shetkari+Khushi+Bazar">
+     <input type="hidden" name="market_name" value="Tiwasa">
+     <input type="hidden" name="market_name" value="Varud">
+     <input type="hidden" name="market_name" value="Varud(Rajura+Bazar)">
+
+
+
+
+            <!--Akola-->
+            <input type="hidden" name="market_name" value="Akola">
+            <input type="hidden" name="market_name" value="Akola(Borgaon+Manju)">
+            <input type="hidden" name="market_name" value="Akot">
+            <input type="hidden" name="market_name" value="Balapur">
+            <input type="hidden" name="market_name" value="Barshi+Takli">
+            <input type="hidden" name="market_name" value="Late+Vasantraoji+Dandale+Khajgi+Krushi+Bazar">
+            <input type="hidden" name="market_name" value="Murtizapur">
+            <input type="hidden" name="market_name" value="Patur">
+            <input type="hidden" name="market_name" value="Shri+Gajanan+Maharaj+Khajagi+Krushi+Utpanna+Bazar">
+            <input type="hidden" name="market_name" value="Telhara">
+                                    
+                            <!--Beed-->
+
+    <input type="hidden" name="market_name" value="Beed">
+    <input type="hidden" name="market_name" value="Ambejaogai">
+    <input type="hidden" name="market_name" value="Gevrai">
+    <input type="hidden" name="market_name" value="Kada">
+    <input type="hidden" name="market_name" value="Kada(Ashti)">
+    <input type="hidden" name="market_name" value="Kai+Madhavrao+Pawar+Khajgi+Krushi+Utappan+Bazar+Sa">
+    <input type="hidden" name="market_name" value="Kaij">
+    <input type="hidden" name="market_name" value="Kille+Dharur">
+    <input type="hidden" name="market_name" value="Majalgaon">
+    <input type="hidden" name="market_name" value="Parali+Vaijyanath">
+    <input type="hidden" name="market_name" value="Patoda">
+    <input type="hidden" name="market_name" value="Vadvani">
+                                                              
+                                                    <!--Bhandara-->
+
+ <input type="hidden" name="market_name" value="Bhandara">
+ <input type="hidden" name="market_name" value="Lakhandur">
+ <input type="hidden" name="market_name" value="Lakhani">
+ <input type="hidden" name="market_name" value="Pavani">
+ <input type="hidden" name="market_name" value="Tumsar">
+
+ <!-- Buldhana -->
+
+ <input type="hidden" name="market_name" value="Buldhana">
+ <input type="hidden" name="market_name" value="ACF+Agro+Marketing+">
+ <input type="hidden" name="market_name" value="BSK+Krishi+Bazar+Private+Ltd">
+ <input type="hidden" name="market_name" value="Buldhana(Dhad)">
+ <input type="hidden" name="market_name" value="Dand+Brothers+Agro+">
+ <input type="hidden" name="market_name" value="Deoulgaon+Raja">
+ <input type="hidden" name="market_name" value="Deulgaon+Raja+Balaji+Agro+Marketing+Private+Market">
+ <input type="hidden" name="market_name" value="Jalgaon+Jamod(Aasalgaon)">
+ <input type="hidden" name="market_name" value="Jalgaon(Jamod)">
+ <input type="hidden" name="market_name" value="Jaykissan+Krushi+Uttpan+Khajgi+Bazar+">
+ <input type="hidden" name="market_name" value="Khamgaon">
+ <input type="hidden" name="market_name" value="Lonar">
+ <input type="hidden" name="market_name" value="Maharaja+Agresen+Private+Krushi+Utappan+Bazar+Sama">
+ <input type="hidden" name="market_name" value="Malkapur">
+ <input type="hidden" name="market_name" value="Mehekar">
+ <input type="hidden" name="market_name" value="Motala">
+ <input type="hidden" name="market_name" value="Nandura">
+ <input type="hidden" name="market_name" value="Sangrampur">
+ <input type="hidden" name="market_name" value="Sangrampur(Varvatbakal)">
+ <input type="hidden" name="market_name" value="Shegaon">
+ <input type="hidden" name="market_name" value="Sindkhed+Raja">
+ <input type="hidden" name="market_name" value="Chikali">
+
+<!--Chandrapur-->
+
+<input type="hidden" name="market_name" value="Bhadrawati">
+<input type="hidden" name="market_name" value="Brahmpuri">
+<input type="hidden" name="market_name" value="Chandrapur">
+<input type="hidden" name="market_name" value="Chandrapur(Ganjwad)">
+<input type="hidden" name="market_name" value="Chimur">
+<input type="hidden" name="market_name" value="Gondpimpri">
+<input type="hidden" name="market_name" value="Korpana">
+<input type="hidden" name="market_name" value="Mul">
+<input type="hidden" name="market_name" value="Nagbhid">
+<input type="hidden" name="market_name" value="Pombhurni">
+<input type="hidden" name="market_name" value="Rajura">
+<input type="hidden" name="market_name" value="Savali">
+<input type="hidden" name="market_name" value="Sindevahi">
+<input type="hidden" name="market_name" value="Varora">
+
+<!-- Chattrapati Sambhajinagar -->
+<input type="hidden" name="market_name" value="Bhagyoday+Cotton+and+Agri+Market">
+<input type="hidden" name="market_name" value="Chattrapati+Sambhajinagar">
+<input type="hidden" name="market_name" value="Fulmbri">
+<input type="hidden" name="market_name" value="Gangapur">
+<input type="hidden" name="market_name" value="Kannad">
+<input type="hidden" name="market_name" value="Khultabad">
+<input type="hidden" name="market_name" value="Kisan+Seva+Private+Market">
+<input type="hidden" name="market_name" value="Lasur+Station">
+<input type="hidden" name="market_name" value="Maharashtra+Agricultural+Farm">
+<input type="hidden" name="market_name" value="Paithan">
+<input type="hidden" name="market_name" value="Sillod">
+<input type="hidden" name="market_name" value="Sillod(Bharadi)">
+<input type="hidden" name="market_name" value="Soygaon">
+<input type="hidden" name="market_name" value="Vaijpur">
+
+<!-- Dharashiv(Usmanabad) -->
+<input type="hidden" name="market_name" value="Bhoom">
+<input type="hidden" name="market_name" value="Dharashiv">
+<input type="hidden" name="market_name" value="Kalamb+(Dharashiv)">
+<input type="hidden" name="market_name" value="Lohara">
+<input type="hidden" name="market_name" value="Paranda">
+<input type="hidden" name="market_name" value="Tuljapur">
+<input type="hidden" name="market_name" value="Umarga">
+<input type="hidden" name="market_name" value="Washi+(Dharashiv)">
+
+
+<!-- Dhule -->
+<input type="hidden" name="market_name" value="Dhule">
+<input type="hidden" name="market_name" value="Dondaicha">
+<input type="hidden" name="market_name" value="Dondaicha(Sindhkheda)">
+<input type="hidden" name="market_name" value="Janata+Agri+Market+(DLS+Agro+Infrastructure+Pvt+Lt)">
+<input type="hidden" name="market_name" value="Keshranand+Cotex+">
+<input type="hidden" name="market_name" value="Pratap+Nana+Mahale+Khajgi+Bajar+Samiti+">
+<input type="hidden" name="market_name" value="Sakri">
+<input type="hidden" name="market_name" value="Shirpur">
+
+<!-- Gadchiroli -->
+<input type="hidden" name="market_name" value="Aheri">
+<input type="hidden" name="market_name" value="Armori">
+<input type="hidden" name="market_name" value="Armori(Desaiganj)">
+<input type="hidden" name="market_name" value="Chamorshi">
+<input type="hidden" name="market_name" value="Gandchiroli">
+<input type="hidden" name="market_name" value="Sironcha">
+
+<!-- Gondia -->
+<input type="hidden" name="market_name" value="Amgaon">
+<input type="hidden" name="market_name" value="Arjuni">
+<input type="hidden" name="market_name" value="Devri">
+<input type="hidden" name="market_name" value="Gondiya">
+<input type="hidden" name="market_name" value="Goregaon">
+<input type="hidden" name="market_name" value="Sadak+Arjuni">
+<input type="hidden" name="market_name" value="Tiroda">
+
+<!-- Hingoli -->
+<input type="hidden" name="market_name" value="Adarsh+Krushi+Bazar">
+<input type="hidden" name="market_name" value="Akhadabalapur">
+<input type="hidden" name="market_name" value="Basmat">
+<input type="hidden" name="market_name" value="Basmat(Kurunda)">
+<input type="hidden" name="market_name" value="Gajanaan+Krushi+Bazar">
+<input type="hidden" name="market_name" value="Gajanan+Krushi+Utpanna+Bazar+(India)+Pvt+Ltd+">
+<input type="hidden" name="market_name" value="Hingoli">
+<input type="hidden" name="market_name" value="Hingoli(Kanegoan+Naka)">
+<input type="hidden" name="market_name" value="Jawala-Bajar">
+<input type="hidden" name="market_name" value="Kalamnuri">
+<input type="hidden" name="market_name" value="Marathawada+Shetkari+Khajgi+Bazar+Parisar">
+<input type="hidden" name="market_name" value="Sant+Namdev+Krushi+Bazar%2c+">
+<input type="hidden" name="market_name" value="Sengoan">
+<input type="hidden" name="market_name" value="Vitthal+Krushi+Utpanna+Bazar+">
+
+
+<!-- Jalana -->
+<input type="hidden" name="market_name" value="Ambad+(Vadigodri)">
+<input type="hidden" name="market_name" value="Ashti(Jalna)">
+<input type="hidden" name="market_name" value="Bhokardan">
+<input type="hidden" name="market_name" value="Bhokardan(Pimpalgaon+Renu)">
+<input type="hidden" name="market_name" value="Ghansawangi">
+<input type="hidden" name="market_name" value="Jafrabad">
+<input type="hidden" name="market_name" value="Jalana">
+<input type="hidden" name="market_name" value="Jalna(Badnapur)">
+<input type="hidden" name="market_name" value="Mantha">
+<input type="hidden" name="market_name" value="Partur">
+<input type="hidden" name="market_name" value="Partur(Vatur)">
+
+<!-- Jalgaon -->
+<input type="hidden" name="market_name" value="Amalner">
+<input type="hidden" name="market_name" value="Bhusaval">
+<input type="hidden" name="market_name" value="Bodwad">
+<input type="hidden" name="market_name" value="Bodwad(Varangaon)">
+<input type="hidden" name="market_name" value="Chalisgaon">
+<input type="hidden" name="market_name" value="Chopada">
+<input type="hidden" name="market_name" value="Dharangaon">
+<input type="hidden" name="market_name" value="Gopal+Krishna+Agro">
+<input type="hidden" name="market_name" value="Govardhan+Farm+Produce+Market+">
+<input type="hidden" name="market_name" value="J+S+K+Agro+Market+">
+<input type="hidden" name="market_name" value="Jalgaon">
+<input type="hidden" name="market_name" value="Jalgaon(Masawat)">
+<input type="hidden" name="market_name" value="Jamner">
+<input type="hidden" name="market_name" value="Jamner(Neri)">
+<input type="hidden" name="market_name" value="Laxmi+Krushi+Utpanna+Khjgi+Bajar">
+<input type="hidden" name="market_name" value="Mahavir+Agri+Market">
+<input type="hidden" name="market_name" value="Pachora">
+<input type="hidden" name="market_name" value="Pachora(Bhadgaon)">
+<input type="hidden" name="market_name" value="Parola">
+<input type="hidden" name="market_name" value="Raver">
+<input type="hidden" name="market_name" value="Raver(Sauda)">
+<input type="hidden" name="market_name" value="Sanghavi+Agriculture+Marketing+">
+<input type="hidden" name="market_name" value="Shantilal+Jain+Agro">
+<input type="hidden" name="market_name" value="Vijaya+Agri+Private+Market">
+<input type="hidden" name="market_name" value="Yashika+Agro+Marketing">
+<input type="hidden" name="market_name" value="Yawal">
+
+<!-- Kolhapur -->
+
+<input type="hidden" name="market_name" value="Gadhinglaj">
+<input type="hidden" name="market_name" value="Jaysingpur">
+<input type="hidden" name="market_name" value="Kolhapur">
+<input type="hidden" name="market_name" value="Kolhapur(Laxmipuri)">
+<input type="hidden" name="market_name" value="Kolhapur(Malkapur)">
+<input type="hidden" name="market_name" value="Vadgaonpeth">
+
+
+<!-- latur -->
+<input type="hidden" name="market_name" value="Ahmedpur">
+<input type="hidden" name="market_name" value="Aurad+Shahajani">
+<input type="hidden" name="market_name" value="Ausa">
+<input type="hidden" name="market_name" value="Chakur">
+<input type="hidden" name="market_name" value="Devani">
+<input type="hidden" name="market_name" value="Jalkot">
+<input type="hidden" name="market_name" value="Latur">
+<input type="hidden" name="market_name" value="Latur(Murud)">
+<input type="hidden" name="market_name" value="Nilanga">
+<input type="hidden" name="market_name" value="Rangrao+Patil+Krushi+Utpanna+Khajgi+Bazar+">
+<input type="hidden" name="market_name" value="Renapur">
+<input type="hidden" name="market_name" value="Shirur+Anantpal">
+<input type="hidden" name="market_name" value="Udgir">
+<input type="hidden" name="market_name" value="Udgir(Hali)">
+
+<!--Mumbai-->
+<input type="hidden" name="market_name" value="All+India+Cottonseed+Crushers+Association">
+<input type="hidden" name="market_name" value="Mumbai">
+<input type="hidden" name="market_name" value="Mumbai-+Fruit+Market">
+<input type="hidden" name="market_name" value="Mumbai-+Thane+Market">
+<input type="hidden" name="market_name" value="NCDEX+Spot+Exchange+">
+<input type="hidden" name="market_name" value="Vashi+New+Mumbai">
+
+<!--Murum -->
+<input type="hidden" name="market_name" value="Dharashiv">
+
+<!-- Nagpur -->
+<input type="hidden" name="market_name" value="Bhiwapur">
+<input type="hidden" name="market_name" value="Hingna">
+<input type="hidden" name="market_name" value="Kalmeshwar">
+<input type="hidden" name="market_name" value="Kamthi">
+<input type="hidden" name="market_name" value="Katol">
+<input type="hidden" name="market_name" value="Mandhal">
+<input type="hidden" name="market_name" value="Mauda">
+<input type="hidden" name="market_name" value="MS+Kalpana+Agri+Commodities+Marketing">
+<input type="hidden" name="market_name" value="Nagpur">
+<input type="hidden" name="market_name" value="Nagpur(Mahatma+Phule+Market)">
+<input type="hidden" name="market_name" value="Narkhed">
+<input type="hidden" name="market_name" value="Parshiwani">
+<input type="hidden" name="market_name" value="Ramtek">
+<input type="hidden" name="market_name" value="Savner">
+<input type="hidden" name="market_name" value="Umared">
+
+<!-- Nanded -->
+<input type="hidden" name="market_name" value="Bhokar">
+<input type="hidden" name="market_name" value="Biloli">
+<input type="hidden" name="market_name" value="Deglur">
+<input type="hidden" name="market_name" value="Dharmabad">
+<input type="hidden" name="market_name" value="Hadgaon">
+<input type="hidden" name="market_name" value="Hadgaon(Tamsa)">
+<input type="hidden" name="market_name" value="Hanegaon">
+<input type="hidden" name="market_name" value="Himalyatnagar">
+<input type="hidden" name="market_name" value="Islapur">
+<input type="hidden" name="market_name" value="Kandhar">
+<input type="hidden" name="market_name" value="Kinwat">
+<input type="hidden" name="market_name" value="Kundalwadi">
+<input type="hidden" name="market_name" value="Kuntur">
+<input type="hidden" name="market_name" value="Loha">
+<input type="hidden" name="market_name" value="Mahur">
+<input type="hidden" name="market_name" value="Mudkhed">
+<input type="hidden" name="market_name" value="Mukhed">
+<input type="hidden" name="market_name" value="Mukhed(Mukkambad)">
+<input type="hidden" name="market_name" value="Naigaon">
+<input type="hidden" name="market_name" value="Nanded">
+<input type="hidden" name="market_name" value="Navratna+Krishi+Utpanna+Khajgi+Bazar+">
+<input type="hidden" name="market_name" value="Shetkari+Khajgi+Bajar">
+<input type="hidden" name="market_name" value="Umari">
+
+                   
+
+            <!--yavatmal -->
+            <input type="hidden" name="market_name" value="Aarni">
+            <input type="hidden" name="market_name" value="Babhulgaon">
+            <input type="hidden" name="market_name" value="Balaji+Krushi+Market">
+            <input type="hidden" name="market_name" value="Bori+Arab">
+            <input type="hidden" name="market_name" value="Darwha">
+            <input type="hidden" name="market_name" value="Digras">
+            <input type="hidden" name="market_name" value="Ghatanji">
+            <input type="hidden" name="market_name" value="Kalamb">
+            <input type="hidden" name="market_name" value="Mahagaon">
+            <input type="hidden" name="market_name" value="Maregoan">
+            <input type="hidden" name="market_name" value="Pandhakawada">
+            <input type="hidden" name="market_name" value="Ner+Parasopant">
+            <input type="hidden" name="market_name" value="Pusad">
+            <input type="hidden" name="market_name" value="Ralegaon">
+            <input type="hidden" name="market_name" value="Umarked(Danki)">
+            <input type="hidden" name="market_name" value="Umarkhed">
+            <input type="hidden" name="market_name" value="Vani">
+            <input type="hidden" name="market_name" value="Yeotmal">
+            <input type="hidden" name="market_name" value="ZariZamini">
+
+            <!--Wardha-->
+            <input type="hidden" name="market_name" value="Arvi">
+            <input type="hidden" name="market_name" value="Ashti">
+            <input type="hidden" name="market_name" value="Ashti(Karanja)">
+            <input type="hidden" name="market_name" value="Higanghat+Infrastructure+Private+Limited">
+            <input type="hidden" name="market_name" value="Hinganghat">
+            <input type="hidden" name="market_name" value="Pulgaon">
+            <input type="hidden" name="market_name" value="Samudrapur">
+            <input type="hidden" name="market_name" value="Sindi">
+            <input type="hidden" name="market_name" value="Sindi(Selu)">
+            <input type="hidden" name="market_name" value="Wardha">
+
+            <!--Washim-->
+            <input type="hidden" name="market_name" value="Jai+Gajanan+Krishi+Bazar">
+            <input type="hidden" name="market_name" value="Karanja">
+            <input type="hidden" name="market_name" value="Krushna+Krishi+Bazar+">
+            <input type="hidden" name="market_name" value="Malegaon(Vashim)">
+            <input type="hidden" name="market_name" value="Mangrulpeer">
+            <input type="hidden" name="market_name" value="Manora">
+            <input type="hidden" name="market_name" value="Risod">
+            <input type="hidden" name="market_name" value="Washim">
+            <input type="hidden" name="market_name" value="Washim(Ansing)">
+            <input type="hidden" name="market_name" value="Shri+Balaji+krishi+Utpanna+Bazar+Samiti+">
+
+            <!--Bhivandi-->
+            <input type="hidden" name="market_name" value="Bhivandi">
+            <input type="hidden" name="market_name" value="Dahanu">
+            <input type="hidden" name="market_name" value="Kalyan">
+            <input type="hidden" name="market_name" value="Murbad">
+            <input type="hidden" name="market_name" value="Palghar">
+            <input type="hidden" name="market_name" value="Shahapur">
+            <input type="hidden" name="market_name" value="Ulhasnagar">
+            <input type="hidden" name="market_name" value="Vasai">
+
+            <!--Sindhudurg-->
+            <input type="hidden" name="market_name" value="Sindhudurg">
+
+            <!--Solapur-->
+            <input type="hidden" name="market_name" value="Akkalkot">
+            <input type="hidden" name="market_name" value="Akluj">
+            <input type="hidden" name="market_name" value="Barshi">
+            <input type="hidden" name="market_name" value="Barshi(Vairag)">
+            <input type="hidden" name="market_name" value="Dudhani">
+            <input type="hidden" name="market_name" value="Karmala">
+            <input type="hidden" name="market_name" value="Kurdwadi">
+            <input type="hidden" name="market_name" value="Mangal+Wedha">
+            <input type="hidden" name="market_name" value="Mohol">
+            <input type="hidden" name="market_name" value="Pandharpur">
+            <input type="hidden" name="market_name" value="Sangola">
+            <input type="hidden" name="market_name" value="Solapur">
+
+
+            <!--Satara-->
+            <input type="hidden" name="market_name" value="Dahivadi">
+            <input type="hidden" name="market_name" value="Jawali">
+            <input type="hidden" name="market_name" value="Karad">
+            <input type="hidden" name="market_name" value="Koregaon">
+            <input type="hidden" name="market_name" value="Lonand">
+            <input type="hidden" name="market_name" value="Patan">
+            <input type="hidden" name="market_name" value="Phaltan">
+            <input type="hidden" name="market_name" value="Satara">
+            <input type="hidden" name="market_name" value="Vaduj">
+            <input type="hidden" name="market_name" value="Vai">
+
+            <!--Sangali-->
+            <input type="hidden" name="market_name" value="Aatpadi">
+            <input type="hidden" name="market_name" value="Islampur">
+            <input type="hidden" name="market_name" value="Palus">
+            <input type="hidden" name="market_name" value="Sangli">
+            <input type="hidden" name="market_name" value="Sangli(Miraj)">
+            <input type="hidden" name="market_name" value="Shirala">
+            <input type="hidden" name="market_name" value="Tasgaon">
+            <input type="hidden" name="market_name" value="Vita">
+
+            <!--Ratnagiri-->
+            <input type="hidden" name="market_name" value="Ratnagiri+(Nachane)">
+
+            <!--Raigad-->
+            <input type="hidden" name="market_name" value="Alibagh">
+            <input type="hidden" name="market_name" value="Karjat(Raigad)">
+            <input type="hidden" name="market_name" value="Khalapur+(Shil-Phata)">
+            <input type="hidden" name="market_name" value="Mahad">
+            <input type="hidden" name="market_name" value="Mangaon">
+            <input type="hidden" name="market_name" value="Murud">
+            <input type="hidden" name="market_name" value="Panvel">
+            <input type="hidden" name="market_name" value="Pen">
+            <input type="hidden" name="market_name" value="Roha">
+
+            <!--Pune-->
+            <input type="hidden" name="market_name" value="Baramati">
+            <input type="hidden" name="market_name" value="Bhor">
+            <input type="hidden" name="market_name" value="Dound">
+            <input type="hidden" name="market_name" value="Indapur">
+            <input type="hidden" name="market_name" value="Junnar">
+            <input type="hidden" name="market_name" value="Junnar(Otur)">
+            <input type="hidden" name="market_name" value="Khed">
+            <input type="hidden" name="market_name" value="Khed(Chakan)">
+            <input type="hidden" name="market_name" value="Khed(Shel+Pimpalgaon)">
+            <input type="hidden" name="market_name" value="Manchar">
+            <input type="hidden" name="market_name" value="Mulshi">
+            <input type="hidden" name="market_name" value="Nira">
+            <input type="hidden" name="market_name" value="Pune">
+            <input type="hidden" name="market_name" value="Shirur">
+            <input type="hidden" name="market_name" value="Pune(Khadiki)">
+            <input type="hidden" name="market_name" value="Pune(Manjri)">
+            <input type="hidden" name="market_name" value="Pune(Pimpri)">
+            <input type="hidden" name="market_name" value="Talegaon+Dabhade">
+
+            <!--Parbhani-->
+            <input type="hidden" name="market_name" value="Bori">
+            <input type="hidden" name="market_name" value="Gangakhed">
+            <input type="hidden" name="market_name" value="Jintur">
+            <input type="hidden" name="market_name" value="Manwat">
+            <input type="hidden" name="market_name" value="Palam">
+            <input type="hidden" name="market_name" value="Parbhani">
+            <input type="hidden" name="market_name" value="Pathari">
+            <input type="hidden" name="market_name" value="Samartha+Krushi+Bajar+Private+Limited+">
+            <input type="hidden" name="market_name" value="Selu">
+            <input type="hidden" name="market_name" value="Shree+Salasar+Krushi+Bazar+">
+            <input type="hidden" name="market_name" value="Sirsam">
+            <input type="hidden" name="market_name" value="Sonpeth">
+            <input type="hidden" name="market_name" value="Tadkalas">
+
+              <!--nashik-->
+            <input type="hidden" name="market_name" value="Baswant">
+            <input type="hidden" name="market_name" value="Chandvad">
+            <input type="hidden" name="market_name" value="Baphana+Agro+Market+Inc">
+            <input type="hidden" name="market_name" value="Devala">
+            <input type="hidden" name="market_name" value="Dindori">
+            <input type="hidden" name="market_name" value="Dindori(Vani)">
+            <input type="hidden" name="market_name" value="Ghoti">
+            <input type="hidden" name="market_name" value="Kalvan">
+            <input type="hidden" name="market_name" value="Lasalgaon">
+            <input type="hidden" name="market_name" value="Lasalgaon(Niphad)">
+            <input type="hidden" name="market_name" value="Malegaon">
+            <input type="hidden" name="market_name" value="Manmad">
+            <input type="hidden" name="market_name" value="Nampur">
+            <input type="hidden" name="market_name" value="Nandgaon">
+            <input type="hidden" name="market_name" value="Nasik">
+            <input type="hidden" name="market_name" value="Pimpalgaon">
+            <input type="hidden" name="market_name" value="Satana">
+            <input type="hidden" name="market_name" value="Sinner">
+            <input type="hidden" name="market_name" value="Suragana">
+            <input type="hidden" name="market_name" value="Umrane">
+            <input type="hidden" name="market_name" value="Yeola">
+
+            <!--Nandurbar -->
+            <input type="hidden" name="market_name" value="Akkalkuwa">
+            <input type="hidden" name="market_name" value="Dhadgaon">
+            <input type="hidden" name="market_name" value="Nandubar(Koparli)">
+            <input type="hidden" name="market_name" value="Nandurbar">
+            <input type="hidden" name="market_name" value="Navapur">
+            <input type="hidden" name="market_name" value="Shahada">
+            <input type="hidden" name="market_name" value="Taloda">
+
+        
+        </div>
+
+       
+              
+        <div class="form-group">
+            <label for="date_from"> तारीख पासून:</label>
+            <input type="date" id="date_from" name="date_from" value="2024-01-01" required>
+        </div>
+        <div class="form-group">
+            <label for="date_to">तारीख पर्यंत:</label>
+            <input type="date" id="date_to" name="date_to" value="2024-03-05" required>
+        </div>
+        <button type="submit">भाव मिळवा</button>
+    </form>
+
+    {% if form_submitted %}
+    <h2>Market Prices (बाजार भाव)</h2>
+    <div class="responsive-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>क्र.</th>
+                    <th>जिल्हा</th>
+                    <th>बाजार(Market)</th>
+                    <th>धान्य / फसल</th>
+                    <th>प्रकार (Variety)</th>
+                    <th>गुणवत्ता</th>
+                    <th>किमत प्रति क्विंटल(₹) (किमान)</th>
+                    <th>किमत प्रति क्विंटल(₹) (कमाल)</th>
+                    <th>सरासरी किमत(₹) (प्रति क्विंटल )</th>
+                    <th>किमत तारीख</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if data %}
+                    {% for row in data %}
+                        <tr>
+                            {% for value in row.values() %}
+                                <td>{{ value }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="10" style="text-align: center;">
+                            <p style="color: red; font-weight: bold;">
+                                चुने गए तारीख के बीच में या तो बाजार में चुने गए फसल की खरीदी नहीं हुई है, 
+                                या फिर किसी कारण से इन दिनों की बाजार की जानकारी आपको दी नहीं जा सकती। 
+                                कृपया अधिक रेंज(High Margin Dates) की तारीख चुनें।
+                            </p>
+                        </td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+    <p style="color: red; font-weight: bold;">
+        टिप: अगर टेबल में "FAQ" होता है, तो "FAQ" का मतलब होता है FAIR AVERAGE QUALITY यानी "वाजवी सरासरी गुणवत्ता"।
+    </p>
+{% endif %}
+        
+
+        <footer>
+    <div class="footer-container">
+        <div class="contact-info">
+            <h3>Contact Information:</h3>
+            <p>Mobile Number: 9876543210</p>
+            <p>Email: contact@krushisahayak.com</p>
+        </div>
+        <div class="links">
+            <h3>Quick Links:</h3>
+            <ul>
+              
+                <li><a href="/about">माहिती</a></li>
+                <li><a href="/sahayata">कृषी सहायता</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html> 

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>कृषी सहायक</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='sahayata.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="navbar-brand">
+                <img src="{{ url_for('static', filename='krushi bajar smiti -logo.jpeg') }}" alt="Krushi Utnnapa Bajar Amiti Logo" class="logo">
+                <span class="brand-text">कृषी सहायक</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">मुख्य पृष्ठ</a></li>
+                <li><a href="/about">माहिती</a></li>
+                <li><a href="/sahayata">कृषी सहायता</a></li>
+                <li><a href="/FAQ">प्रश्न-उत्तर</a></li>
+                <!-- Add more links as needed -->
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Highlight active navbar item
+        const currentLocation = location.pathname;
+        const menuItems = document.querySelectorAll('.nav-links li a');
+
+        menuItems.forEach(menuItem => {
+            if (menuItem.getAttribute('href') === currentLocation) {
+                menuItem.parentElement.classList.add('active');
+            }
+        });
+    </script>
+
+    <main>
+        <section class="projects">
+            <div class="project-card">
+                <a href="https://krushibajar.netlify.app/"> <!-- Specify the URL here -->
+                    <img src="{{ url_for('static', filename='krushi-bajar.png') }}" alt="krushibajar">
+                    <div class="project-info">
+                        <h3>कृषि बाजार</h3>
+                        <p>कृषकांसाठी ई-कॉमर्स प्लॅटफॉर्म</p>
+                    </div>
+                </a>
+            </div>
+            <div class="project-card">
+                <a href="https://demono3.onrender.com/"> <!-- Specify the URL here -->
+                    <img src="{{ url_for('static', filename='kapasvaidhya.avif') }}" alt=" ">
+                    <div class="project-info">
+                        <h3>कापस वैद्य</h3>
+                        <p>कापसाच्या रोगांचे निदान आणि उपाय</p>
+                    </div>
+                </a>
+            </div>
+            <div class="project-card">
+                <a href="index.html"> <!-- Specify the URL here -->
+                    <img src="{{ url_for('static', filename='bajar-bhav-poster1.png') }}" alt="">
+                    <div class="project-info">
+                        <h3>बाजार भाव</h3>
+                        <p>कृषी उत्पादकांचे बाजार भाव</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="project-card">
+                <a href="/havaman"> <!-- Specify the URL here -->
+                    <img src="{{ url_for('static', filename='havaman.webp') }}" alt=" ">
+                    <div class="project-info">
+                        <h3>हवामान अंदाज</h3>
+                        <p>पंजाबराव डखचा नवा हवामान अंदाज</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="project-card">
+                <a href="/kapusvyavasthapan"> <!-- Specify the URL here -->
+                    <img src="{{ url_for('static', filename='kapusvyavasthapan.webp') }}" alt="">
+                    <div class="project-info">
+                        <h3> कापूस व्यवस्थापन </h3>
+                        <p>कसे करावे कापूस व्यवस्थापन ?</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="project-card">
+                <a href="https://agriwelfare.gov.in/en/Major"> <!-- Specify the URL here -->
+                    <img src="{{ url_for('static', filename='kisan-yojna.jpg') }}" alt="Farmer holding mobile">
+                    <div class="project-info">
+                        <h3>कृषी योजना</h3>
+                        <p>आजच जाणून घ्या नवीन कृषी सरकारी योजना</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-container">
+                <div class="contact-info">
+                    <h3>Contact Information:</h3>
+                    <p>Mobile Number: 9876543210</p>
+                    <p>Email: contact@krushibajar.com</p>
+                </div>
+                <div class="links">
+                    <h3>Quick Links:</h3>
+                    <ul>
+                      
+                        <li><a href="/about">माहिती</a></li>
+                        <li><a href="/sahayata">कृषी सहायता</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+
+    </main>
+</body>
+</html>

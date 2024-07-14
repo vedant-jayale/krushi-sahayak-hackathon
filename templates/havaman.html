@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>कृषी सहायक</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='havaman.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="navbar-brand">
+                <img src="{{ url_for('static', filename='krushi bajar smiti -logo.jpeg') }}" alt="Krushi Utnnapa Bajar Amiti Logo" class="logo">
+                <span class="brand-text">कृषी सहायक</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">मुख्य पृष्ठ</a></li>
+                <li><a href="/about">माहिती</a></li>
+                <li><a href="/sahayata">कृषी सहायता</a></li>
+                <li><a href="/FAQ">प्रश्न-उत्तर</a></li>
+                <!-- Add more links as needed -->
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Highlight active navbar item
+        const currentLocation = location.pathname;
+        const menuItems = document.querySelectorAll('.nav-links li a');
+
+        menuItems.forEach(menuItem => {
+            if (menuItem.getAttribute('href') === currentLocation) {
+                menuItem.parentElement.classList.add('active');
+            }
+        });
+    </script>
+
+    <main>
+        <section class="havaman">
+            <div class="havaman-info">
+                <img src="{{ url_for('static', filename='havaman.webp') }}" alt='havaman'>
+                <h2>शेतकर्‍यांना दिलासा - पंजाबराव डख यांचा नवा हवामान अंदाज</h2>
+                <p>
+                    अप्रत्याशित हवामान पद्धतींचा शेतकऱ्यांवर सतत परिणाम होत असताना, हवामान अंदाजाची एक नवीन पद्धत उदयास आली आहे जी महाराष्ट्रातील हजारो शेतकऱ्यांना आशादायक वाटू लागली आहे. पंजाब डख या हवामान अंदाज सेवेने, भारतीय हवामान खात्याच्या पारंपारिक हवामान अंदाज पद्धतींना मागे टाकत आपल्या अचूक अंदाजाने राज्याला वेठीस धरले आहे.
+                </p>
+                <p>
+                    महाराष्ट्रातील परभणी जिल्ह्यातील गुगळी धामणगाव येथील पंजाब डख हे त्यांच्या अचूक हवामान अंदाजांसाठी प्रसिद्ध झाले आहेत. ज्यांनी राज्यातील शेतकऱ्यांना पावसाची तयारी करण्यास आणि त्यांच्या पिकांचे नुकसान होण्यापासून संरक्षण करण्यास मदत केली आहे. पंजाब डख हे परभणी मधील जिल्हा परिषद शाळेमध्ये अंशतः शिक्षकाचे काम करत होते. आता पंजाब डख हे पूर्ण वेळ हवामान अंदाजक म्हणून शेतकऱ्यांच्या सेवार्थ काम करतात.
+                </p>
+                <p>
+                    पंजाब डख यांनी त्यांच्या अचूक आणि सरळ अंदाजामुळे शेतकऱ्यांमध्ये प्रचंड लोकप्रियता मिळवली आहे. ही सेवा स्थानिक भाषेत हवामान अंदाज देण्यासाठी व्हॉट्सॲप चा वापर करतात, ज्यामुळे शेतकऱ्यांना समजणे सोपे होते. अनेक शेतकरी पारंपारिक हवामान अंदाजामध्ये वापरल्या जाणार्‍या जटिल तांत्रिक शब्दाचा अर्थ समजून घेण्यासाठी धडपडत असताना, पंजाब डख सोपी भाषा वापरतात, ज्यामुळे त्यांना आगामी हवामानाच्या घटनांसाठी तयारी करणे सोपे होते.
+                </p>
+                <a href="https://www.youtube.com/@Panjabraodakhofficial" target="_blank" class="youtube-link">पंजाबराव डखचा युट्यूब चॅनेल</a>
+            </div>
+        </section>
+    </main>
+
+
+
+<footer>
+    <div class="footer-container">
+        <div class="contact-info">
+            <h3>Contact Information:</h3>
+            <p>Mobile Number: +91 9123456789</p>
+            <p>Email: contact@krushisahayak.com</p>
+        </div>
+        <div class="links">
+            <h3>Quick Links:</h3>
+            <ul>
+              
+                <li><a href="/about">माहिती</a></li>
+                <li><a href="/sahayata">कृषी सहायता</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html> 

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>कृषी सहायक</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="navbar-brand">
+                <img src="{{ url_for('static', filename='krushi bajar smiti -logo.jpeg') }}" alt="Krushi Utnnapa Bajar Amiti Logo" class="logo">
+                <span class="brand-text">कृषी सहायक</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">मुख्य पृष्ठ</a></li>
+                <li><a href="/about">माहिती</a></li>
+                <li><a href="/sahayata">कृषी सहायता</a></li>
+                <li><a href="/FAQ">प्रश्न-उत्तर</a></li>
+                <!-- Add more links as needed -->
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Highlight active navbar item
+        const currentLocation = location.pathname;
+        const menuItems = document.querySelectorAll('.nav-links li a');
+
+        menuItems.forEach(menuItem => {
+            if (menuItem.getAttribute('href') === currentLocation) {
+                menuItem.parentElement.classList.add('active');
+            }
+        });
+    </script>
+
+
+    <div class="language-switcher">
+        <button id="marathi-button" class="active">मराठी</button>
+        <button id="hindi-button">हिन्दी</button>
+    </div>
+
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='indian-farmer-with smartphone.jpg') }}" alt="Farmer holding mobile">
+        <p id="content">
+            आता आपल्या धान्य/पिकाचे बाजार भाव जाणून घेणे झाले अगदी सोपे.कृषी सहायक बाजार भाव ट्रॅकर अ‍ॅप्लिकेशन आपल्याला रोजच्या बाजार भावाची अचूक माहिती पुरवेल. आपल्या शेतमालाचे योग्य मूल्य मिळवा आणि आपल्या शेतीला अधिक लाभदायक बनवा.
+            आमचे अ‍ॅप्लिकेशन वापरणे खूप सोपे आहे. फक्त आपल्या पिकाचे नाव, राज्य, जिल्हा आणि बाजार निवडा आणि एकच क्लिक मध्ये मिळवा ताज्या बाजार भावांची माहिती. हे अ‍ॅप्लिकेशन शेतकऱ्यांसाठी विशेषतः तयार केलेले आहे, जेणेकरून त्यांना त्यांच्या मेहनतीचे योग्य मूल्य मिळावे.
+            शेतकऱ्यांसाठी अधिक माहितीपूर्ण आणि उपयुक्त ठरणारे हे अ‍ॅप्लिकेशन नक्कीच एक मोठी मदत ठरेल. शेतमालाचे भाव अद्ययावत ठेवून आपल्या व्यवसायात अधिक नफा कमवा. आता बाजार भाव जाणून घ्या आणि आपल्या शेतीचे नियोजन करा.
+            आपल्याला या अ‍ॅप्लिकेशन बद्दल काही शंका अथवा सूचना असल्यास, कृपया आमच्याशी संपर्क साधा. आमची टीम आपल्याला सहकार्य करण्यासाठी सदैव तत्पर आहे.
+        </p>
+    </div>
+
+    <div class="contact-info">
+        <h3>संपर्क माहिती:</h3>
+        <p>मोबाइल नंबर: ९८७६५४३२१०९</p>
+        <p>आपल्याकडे कोणतेही समस्या असल्यास, कृपया ईमेल किंवा संपर्क साधा:</p>
+        <p>ईमेल: contact@krushibajar.com</p>
+    </div>
+
+    <script>
+        const marathiContent = `
+            आता आपल्या धान्य/पिकाचे बाजार भाव जाणून घेणे झाले अगदी सोपे. कृषी सहायक बाजार भाव ट्रॅकर अ‍ॅप्लिकेशन आपल्याला रोजच्या बाजार भावाची अचूक माहिती पुरवेल. आपल्या शेतमालाचे योग्य मूल्य मिळवा आणि आपल्या शेतीला अधिक लाभदायक बनवा.
+            आमचे अ‍ॅप्लिकेशन वापरणे खूप सोपे आहे. फक्त आपल्या पिकाचे नाव, राज्य, जिल्हा आणि बाजार निवडा आणि एकच क्लिक मध्ये मिळवा ताज्या बाजार भावांची माहिती. हे अ‍ॅप्लिकेशन शेतकऱ्यांसाठी विशेषतः तयार केलेले आहे, जेणेकरून त्यांना त्यांच्या मेहनतीचे योग्य मूल्य मिळावे.
+            शेतकऱ्यांसाठी अधिक माहितीपूर्ण आणि उपयुक्त ठरणारे हे अ‍ॅप्लिकेशन नक्कीच एक मोठी मदत ठरेल. शेतमालाचे भाव अद्ययावत ठेवून आपल्या व्यवसायात अधिक नफा कमवा. आता बाजार भाव जाणून घ्या आणि आपल्या शेतीचे नियोजन करा.
+            आपल्याला या अ‍ॅप्लिकेशन बद्दल काही शंका अथवा सूचना असल्यास, कृपया आमच्याशी संपर्क साधा. आमची टीम आपल्याला सहकार्य करण्यासाठी सदैव तत्पर आहे.
+        `;
+
+        const hindiContent = `
+            अब आपके अनाज / पिक के बाजार भाव जानना बहुत ही आसान हो गया है। कृषी सहायक बाजार भाव ट्रैकर ऐप्लिकेशन आपको रोजाना के बाजार भाव की सटीक जानकारी प्रदान करता है। अपने खेती के लायक मूल्य प्राप्त करें और अपनी कृषि को अधिक लाभदायक बनाएं।
+            हमारा ऐप्लिकेशन उपयोग करना बहुत ही सरल है। केवल अपने पिक का नाम, राज्य, जिला और बाजार चुनें और एक क्लिक में ताजा बाजार भाव की जानकारी प्राप्त करें। यह ऐप्लिकेशन विशेष रूप से किसानों के लिए तैयार किया गया है, जिससे उन्हें उनकी मेहनत के लायक मूल्य प्राप्त हो सके।
+            किसानों के लिए अधिक जानकारीपूर्ण और उपयुक्त होने वाला यह ऐप्लिकेशन निश्चित रूप से एक बड़ी मदद साबित होगा। अपनी खेती के भाव को अद्यतन रखें और अपने व्यापार में अधिक लाभ कमाएं। अब बाजार भाव जानें और अपनी खेती की योजना बनाएं।
+            इस ऐप्लिकेशन के बारे में आपके पास कोई भी प्रश्न या सुझाव हैं, तो कृपया हमसे संपर्क करें। हमारी टीम हमेशा आपकी सहायता के लिए तत्पर है।
+        `;
+
+        const contentElement = document.getElementById('content');
+        const marathiButton = document.getElementById('marathi-button');
+        const hindiButton = document.getElementById('hindi-button');
+
+        marathiButton.addEventListener('click', () => {
+            contentElement.innerHTML = marathiContent;
+            marathiButton.classList.add('active');
+            hindiButton.classList.remove('active');
+        });
+
+        hindiButton.addEventListener('click', () => {
+            contentElement.innerHTML = hindiContent;
+            hindiButton.classList.add('active');
+            marathiButton.classList.remove('active');
+        });
+    </script>
+       <footer>
+        <div class="footer-container">
+            <div class="contact-info">
+                <h3>Contact Information:</h3>
+                <p>Mobile Number: 9876543210</p>
+                <p>Email: contact@krushibajar.com</p>
+            </div>
+            <div class="links">
+                <h3>Quick Links:</h3>
+                <ul>
+                  
+                    <li><a href="/about">माहिती</a></li>
+                    <li><a href="/sahayata">कृषी सहायता</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
