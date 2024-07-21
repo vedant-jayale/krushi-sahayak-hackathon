@@ -18,7 +18,6 @@
                 <li><a href="/about">माहिती</a></li>
                 <li><a href="/sahayata">कृषी सहायता</a></li>
                 <li><a href="/FAQ">प्रश्न-उत्तर</a></li>
-                <!-- Add more links as needed -->
             </ul>
             <div class="menu-toggle" id="mobile-menu">
                 <span class="bar"></span>
@@ -47,10 +46,15 @@
         });
     </script>
 
+    <div class="language-switcher">
+        <button id="marathi-button">मराठी</button>
+        <button id="hindi-button" class="active">हिन्दी</button>
+    </div>
+
     <main>
         <section class="projects">
             <div class="project-card">
-                <a href="https://krushibajar.netlify.app/"> <!-- Specify the URL here -->
+                <a href="https://krushibajar.netlify.app/">
                     <img src="{{ url_for('static', filename='krushi-bajar.png') }}" alt="krushibajar">
                     <div class="project-info">
                         <h3>कृषि बाजार</h3>
@@ -59,16 +63,16 @@
                 </a>
             </div>
             <div class="project-card">
-                <a href="https://demono3.onrender.com/"> <!-- Specify the URL here -->
+                <a href="https://demono3.onrender.com/">
                     <img src="{{ url_for('static', filename='kapasvaidhya.avif') }}" alt=" ">
                     <div class="project-info">
-                        <h3>कापस वैद्य</h3>
+                        <h3>कपास वैद्य</h3>
                         <p>कापसाच्या रोगांचे निदान आणि उपाय</p>
                     </div>
                 </a>
             </div>
             <div class="project-card">
-                <a href="index.html"> <!-- Specify the URL here -->
+                <a href="index.html">
                     <img src="{{ url_for('static', filename='bajar-bhav-poster1.png') }}" alt="">
                     <div class="project-info">
                         <h3>बाजार भाव</h3>
@@ -76,9 +80,8 @@
                     </div>
                 </a>
             </div>
-
             <div class="project-card">
-                <a href="/havaman"> <!-- Specify the URL here -->
+                <a href="/havaman">
                     <img src="{{ url_for('static', filename='havaman.webp') }}" alt=" ">
                     <div class="project-info">
                         <h3>हवामान अंदाज</h3>
@@ -86,9 +89,8 @@
                     </div>
                 </a>
             </div>
-
             <div class="project-card">
-                <a href="/kapusvyavasthapan"> <!-- Specify the URL here -->
+                <a href="/kapusvyavasthapan">
                     <img src="{{ url_for('static', filename='kapusvyavasthapan.webp') }}" alt="">
                     <div class="project-info">
                         <h3> कापूस व्यवस्थापन </h3>
@@ -96,9 +98,8 @@
                     </div>
                 </a>
             </div>
-
             <div class="project-card">
-                <a href="https://agriwelfare.gov.in/en/Major"> <!-- Specify the URL here -->
+                <a href="https://agriwelfare.gov.in/en/Major">
                     <img src="{{ url_for('static', filename='kisan-yojna.jpg') }}" alt="Farmer holding mobile">
                     <div class="project-info">
                         <h3>कृषी योजना</h3>
@@ -106,27 +107,200 @@
                     </div>
                 </a>
             </div>
-        </section>
-
-        <footer>
-            <div class="footer-container">
-                <div class="contact-info">
-                    <h3>Contact Information:</h3>
-                    <p>Mobile Number: 9876543210</p>
-                    <p>Email: contact@krushibajar.com</p>
-                </div>
-                <div class="links">
-                    <h3>Quick Links:</h3>
-                    <ul>
-                      
-                        <li><a href="/about">माहिती</a></li>
-                        <li><a href="/sahayata">कृषी सहायता</a></li>
-                    </ul>
-                </div>
+            <!-- Additional Services -->
+            <div class="project-card">
+                <a href="/soil-testing">
+                    <img src="{{ url_for('static', filename='Mati-parikshan.jpg' )}}" alt="Soil Testing">
+                    <div class="project-info">
+                        <h3>मिट्टी परीक्षण</h3>
+                        <p>आपल्या मातीचे परीक्षण करा आणि पिकासाठी योग्य सल्ला मिळवा</p>
+                    </div>
+                </a>
             </div>
-        </footer>
-
-
+            
+        </section>
     </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="contact-info">
+                <h3>संपर्क माहिती:</h3>
+            <p>Mobile Number: 987654321x</p>
+            <p>Email: contact@krushisahayak.com</p>
+            </div>
+            <div class="links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/about">माहिती</a></li>
+                    <li><a href="/sahayata">कृषी सहायता</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const marathiContent = `
+            <section class="projects">
+                <!-- Marathi content for all project cards -->
+                <div class="project-card">
+                    <a href="https://krushibajar.netlify.app/">
+                        <img src="{{ url_for('static', filename='krushi-bajar.png') }}" alt="krushibajar">
+                        <div class="project-info">
+                            <h3>कृषि बाजार</h3>
+                            <p>कृषकांसाठी ई-कॉमर्स प्लॅटफॉर्म</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <a href="https://demono3.onrender.com/">
+                        <img src="{{ url_for('static', filename='kapasvaidhya.avif') }}" alt=" ">
+                        <div class="project-info">
+                            <h3>कपास वैद्य</h3>
+                            <p>कापसाच्या रोगांचे निदान आणि उपाय</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <a href="index.html">
+                        <img src="{{ url_for('static', filename='bajar-bhav-poster1.png') }}" alt="">
+                        <div class="project-info">
+                            <h3>बाजार भाव</h3>
+                            <p>कृषी उत्पादकांचे बाजार भाव</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <a href="/havaman">
+                        <img src="{{ url_for('static', filename='havaman.webp') }}" alt=" ">
+                        <div class="project-info">
+                            <h3>हवामान अंदाज</h3>
+                            <p>पंजाबराव डखचा नवा हवामान अंदाज</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <a href="/kapusvyavasthapan">
+                        <img src="{{ url_for('static', filename='kapusvyavasthapan.webp') }}" alt="">
+                        <div class="project-info">
+                            <h3> कापूस व्यवस्थापन </h3>
+                            <p>कसे करावे कापूस व्यवस्थापन ?</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <a href="https://agriwelfare.gov.in/en/Major">
+                        <img src="{{ url_for('static', filename='kisan-yojna.jpg') }}" alt="Farmer holding mobile">
+                        <div class="project-info">
+                            <h3>कृषी योजना</h3>
+                            <p>आजच जाणून घ्या नवीन कृषी सरकारी योजना</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- Additional Services -->
+                <div class="project-card">
+                    <a href="/soil-testing">
+                        <img src="{{ url_for('static', filename='Mati-parikshan.jpg') }}" alt="Soil Testing">
+                        <div class="project-info">
+                            <h3>मिट्टी परीक्षण</h3>
+                            <p>आपल्या मातीचे परीक्षण करा आणि पिकासाठी योग्य सल्ला मिळवा</p>
+                        </div>
+                    </a>
+                </div>
+              
+                    
+            
+            </section>
+        `;
+
+        const hindiContent = `
+            <section class="projects">
+                <!-- Hindi content for all project cards -->
+                <div class="project-card">
+                    <a href="https://krushibajar.netlify.app/">
+                        <img src="{{ url_for('static', filename='krushi-bajar.png') }}" alt="krushibajar">
+                        <div class="project-info">
+                            <h3>कृषि बाजार</h3>
+                            <p>कृषकों के लिए ई-कॉमर्स प्लेटफॉर्म</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <a href="https://demono3.onrender.com/">
+                        <img src="{{ url_for('static', filename='kapasvaidhya.avif') }}" alt=" ">
+                        <div class="project-info">
+                            <h3>कपास वैद्य</h3>
+                            <p>कपास की बीमारियों का निदान और उपाय</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <a href="index.html">
+                        <img src="{{ url_for('static', filename='bajar-bhav-poster1.png') }}" alt="">
+                        <div class="project-info">
+                            <h3>बाजार भाव</h3>
+                            <p>कृषि उत्पादकों के बाजार भाव</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <a href="/havaman">
+                        <img src="{{ url_for('static', filename='havaman.webp') }}" alt=" ">
+                        <div class="project-info">
+                            <h3>मौसम पूर्वानुमान</h3>
+                            <p>पंजाबराव डाख का नया मौसम पूर्वानुमान</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <a href="/kapusvyavasthapan">
+                        <img src="{{ url_for('static', filename='kapusvyavasthapan.webp') }}" alt="">
+                        <div class="project-info">
+                            <h3>कपास प्रबंधन</h3>
+                            <p>कैसे करें कपास प्रबंधन?</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <a href="https://agriwelfare.gov.in/en/Major">
+                        <img src="{{ url_for('static', filename='kisan-yojna.jpg') }}" alt="Farmer holding mobile">
+                        <div class="project-info">
+                            <h3>कृषि योजना</h3>
+                            <p>आज ही जानें नवीन कृषि सरकारी योजनाएं</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- Additional Services -->
+                <div class="project-card">
+                    <a href="/soil-testing">
+                       <img src="{{ url_for('static', filename='Mati-parikshan.jpg' )}}" alt="Soil Testing">
+                        <div class="project-info">
+                            <h3>मिट्टी परीक्षण</h3>
+                            <p>अपनी मिट्टी का परीक्षण करें और फसलों के लिए सही सलाह प्राप्त करें</p>
+                        </div>
+                    </a>
+                </div>
+                
+            </section>
+        `;
+
+        const marathiButton = document.getElementById('marathi-button');
+        const hindiButton = document.getElementById('hindi-button');
+        const mainContent = document.querySelector('main');
+
+        marathiButton.addEventListener('click', () => {
+            mainContent.innerHTML = marathiContent;
+            marathiButton.classList.add('active');
+            hindiButton.classList.remove('active');
+        });
+
+        hindiButton.addEventListener('click', () => {
+            mainContent.innerHTML = hindiContent;
+            hindiButton.classList.add('active');
+            marathiButton.classList.remove('active');
+        });
+
+        // Load Hindi content by default
+        mainContent.innerHTML = hindiContent;
+    </script>
 </body>
 </html>

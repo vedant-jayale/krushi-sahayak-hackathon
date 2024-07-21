@@ -1,0 +1,303 @@
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+/* Navbar Styles */
+/* Navbar Styles */
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.brand-text {
+    color: red; /* or green */
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    height: 3px;
+    width: 25px;
+    background-color: #fff;
+    margin: 4px 0;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        text-align: center;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+}
+/* Active Navbar Item */
+.nav-links .active a {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.language-switcher {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.language-switcher button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.language-switcher button:hover {
+    background-color: #45a049;
+}
+
+.content {
+    display: none;
+}
+
+.content h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.faq-section {
+    margin-top: 20px;
+}
+
+.faq-section h2 {
+    color: #4CAF50;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+}
+
+.faq-item h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.faq-item p {
+    margin: 0;
+    color: #666;
+}
+
+.videos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.video-item {
+    background-color: #f8f8f8;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.video-item a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.video-item:hover {
+    transform: scale(1.05);
+}
+
+.video-thumbnail {
+    position: relative;
+    overflow: hidden;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.play-icon img {
+    width: 100%;
+    height: auto;
+}
+
+.video-item:hover .play-icon {
+    opacity: 1;
+}
+
+.video-item p {
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-item {
+        width: 100%;
+    }
+}
+
+
+.video-header {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.video-header h2 {
+    font-size: 24px;
+    color: #4CAF50;
+    font-weight: bold;
+    margin: 0;
+}
+
+.video-header p {
+    font-size: 18px;
+    color: #666;
+}
+
+footer {
+    background-color: #86a884;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contact-info,
+.links {
+    flex: 1;
+    margin: 0 20px;
+}
+
+.contact-info h3,
+.links h3 {
+    margin-bottom: 10px;
+}
+
+.contact-info p,
+.links ul {
+    margin: 10px 0;
+}
+
+.links ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.links ul li {
+    margin-bottom: 5px;
+}
+
+.links ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.links ul li a:hover {
+    text-decoration: underline;
+}

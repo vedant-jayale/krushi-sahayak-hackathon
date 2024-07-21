@@ -49,42 +49,91 @@
 
     <main>
         <section class="havaman">
+            <div class="language-switcher">
+                <button id="marathi" onclick="switchLanguage('marathi')">मराठी</button>
+                <button id="hindi" onclick="switchLanguage('hindi')">हिन्दी</button>
+                <button id="english" onclick="switchLanguage('english')">English</button>
+            </div>
+
             <div class="havaman-info">
                 <img src="{{ url_for('static', filename='havaman.webp') }}" alt='havaman'>
-                <h2>शेतकर्‍यांना दिलासा - पंजाबराव डख यांचा नवा हवामान अंदाज</h2>
-                <p>
+                <h2 id="heading">शेतकर्‍यांना दिलासा - पंजाबराव डख यांचा नवा हवामान अंदाज</h2>
+                <p id="intro">
                     अप्रत्याशित हवामान पद्धतींचा शेतकऱ्यांवर सतत परिणाम होत असताना, हवामान अंदाजाची एक नवीन पद्धत उदयास आली आहे जी महाराष्ट्रातील हजारो शेतकऱ्यांना आशादायक वाटू लागली आहे. पंजाब डख या हवामान अंदाज सेवेने, भारतीय हवामान खात्याच्या पारंपारिक हवामान अंदाज पद्धतींना मागे टाकत आपल्या अचूक अंदाजाने राज्याला वेठीस धरले आहे.
                 </p>
-                <p>
+                <p id="details">
                     महाराष्ट्रातील परभणी जिल्ह्यातील गुगळी धामणगाव येथील पंजाब डख हे त्यांच्या अचूक हवामान अंदाजांसाठी प्रसिद्ध झाले आहेत. ज्यांनी राज्यातील शेतकऱ्यांना पावसाची तयारी करण्यास आणि त्यांच्या पिकांचे नुकसान होण्यापासून संरक्षण करण्यास मदत केली आहे. पंजाब डख हे परभणी मधील जिल्हा परिषद शाळेमध्ये अंशतः शिक्षकाचे काम करत होते. आता पंजाब डख हे पूर्ण वेळ हवामान अंदाजक म्हणून शेतकऱ्यांच्या सेवार्थ काम करतात.
                 </p>
-                <p>
+                <p id="popularity">
                     पंजाब डख यांनी त्यांच्या अचूक आणि सरळ अंदाजामुळे शेतकऱ्यांमध्ये प्रचंड लोकप्रियता मिळवली आहे. ही सेवा स्थानिक भाषेत हवामान अंदाज देण्यासाठी व्हॉट्सॲप चा वापर करतात, ज्यामुळे शेतकऱ्यांना समजणे सोपे होते. अनेक शेतकरी पारंपारिक हवामान अंदाजामध्ये वापरल्या जाणार्‍या जटिल तांत्रिक शब्दाचा अर्थ समजून घेण्यासाठी धडपडत असताना, पंजाब डख सोपी भाषा वापरतात, ज्यामुळे त्यांना आगामी हवामानाच्या घटनांसाठी तयारी करणे सोपे होते.
                 </p>
                 <a href="https://www.youtube.com/@Panjabraodakhofficial" target="_blank" class="youtube-link">पंजाबराव डखचा युट्यूब चॅनेल</a>
             </div>
+
+            <!-- Video Section -->
+            <section class="video-section">
+                <h2 id="video-header">अधिक माहिती साठी खालील लिंकला भेट द्या</h2>
+                <div class="video-container">
+                    <div class="video-item">
+                        <a href="https://punjabdakh.com/" target="_blank">
+                            <img src="{{ url_for('static', filename='panjab-dakh-web.jpg') }}" alt="Video 1">
+                        </a>
+                        <a href="https://punjabdakh.com/"><p>https://punjabdakh.com/</p></a>
+                    </div>
+                  
+            </section>
         </section>
     </main>
 
-
-
-<footer>
-    <div class="footer-container">
-        <div class="contact-info">
-            <h3>Contact Information:</h3>
-            <p>Mobile Number: +91 9123456789</p>
-            <p>Email: contact@krushisahayak.com</p>
+    <footer>
+        <div class="footer-container">
+            <div class="contact-info">
+                <h3>Contact Information:</h3>
+                <p>Mobile Number: +91 9123456789</p>
+                <p>Email: contact@krushisahayak.com</p>
+            </div>
+            <div class="links">
+                <h3>Quick Links:</h3>
+                <ul>
+                    <li><a href="/about">माहिती</a></li>
+                    <li><a href="/sahayata">कृषी सहायता</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="links">
-            <h3>Quick Links:</h3>
-            <ul>
-              
-                <li><a href="/about">माहिती</a></li>
-                <li><a href="/sahayata">कृषी सहायता</a></li>
-            </ul>
-        </div>
-    </div>
-</footer>
+    </footer>
 
+    <script>
+        function switchLanguage(language) {
+            const translations = {
+                marathi: {
+                    heading: "शेतकर्‍यांना दिलासा - पंजाबराव डख यांचा नवा हवामान अंदाज",
+                    intro: "अप्रत्याशित हवामान पद्धतींचा शेतकऱ्यांवर सतत परिणाम होत असताना, हवामान अंदाजाची एक नवीन पद्धत उदयास आली आहे जी महाराष्ट्रातील हजारो शेतकऱ्यांना आशादायक वाटू लागली आहे. पंजाब डख या हवामान अंदाज सेवेने, भारतीय हवामान खात्याच्या पारंपारिक हवामान अंदाज पद्धतींना मागे टाकत आपल्या अचूक अंदाजाने राज्याला वेठीस धरले आहे.",
+                    details: "महाराष्ट्रातील परभणी जिल्ह्यातील गुगळी धामणगाव येथील पंजाब डख हे त्यांच्या अचूक हवामान अंदाजांसाठी प्रसिद्ध झाले आहेत. ज्यांनी राज्यातील शेतकऱ्यांना पावसाची तयारी करण्यास आणि त्यांच्या पिकांचे नुकसान होण्यापासून संरक्षण करण्यास मदत केली आहे. पंजाब डख हे परभणी मधील जिल्हा परिषद शाळेमध्ये अंशतः शिक्षकाचे काम करत होते. आता पंजाब डख हे पूर्ण वेळ हवामान अंदाजक म्हणून शेतकऱ्यांच्या सेवार्थ काम करतात.",
+                    popularity: "पंजाब डख यांनी त्यांच्या अचूक आणि सरळ अंदाजामुळे शेतकऱ्यांमध्ये प्रचंड लोकप्रियता मिळवली आहे. ही सेवा स्थानिक भाषेत हवामान अंदाज देण्यासाठी व्हॉट्सॲप चा वापर करतात, ज्यामुळे शेतकऱ्यांना समजणे सोपे होते. अनेक शेतकरी पारंपारिक हवामान अंदाजामध्ये वापरल्या जाणार्‍या जटिल तांत्रिक शब्दाचा अर्थ समजून घेण्यासाठी धडपडत असताना, पंजाब डख सोपी भाषा वापरतात, ज्यामुळे त्यांना आगामी हवामानाच्या घटनांसाठी तयारी करणे सोपे होते.",
+                    videoHeader: "अधिक माहिती साठी खालील लिंकला भेट द्या"
+                },
+                hindi: {
+                    heading: "किसानों के लिए राहत - पंजाबराव डख की नई मौसम भविष्यवाणी",
+                    intro: "अनअपेक्षित मौसम पैटर्न का किसानों पर लगातार प्रभाव पड़ता है, मौसम पूर्वानुमान की एक नई विधि सामने आई है जो महाराष्ट्र के हजारों किसानों के लिए आशाजनक साबित हो रही है। पंजाब डख की मौसम पूर्वानुमान सेवा ने भारतीय मौसम विभाग की पारंपरिक मौसम पूर्वानुमान विधियों को पीछे छोड़ते हुए अपनी सटीक भविष्यवाणी से राज्य को झकझोर दिया है।",
+                    details: "महाराष्ट्र के परभणी जिले के गुगली धामणगांव के पंजाब डख अपने सटीक मौसम पूर्वानुमान के लिए प्रसिद्ध हो गए हैं। जिन्होंने राज्य के किसानों को बारिश की तैयारी करने और उनकी फसलों के नुकसान से बचाने में मदद की है। पंजाब डख परभणी के जिला परिषद स्कूल में आंशिक रूप से शिक्षक के रूप में काम कर रहे थे। अब पंजाब डख पूर्णकालिक मौसम भविष्यवक्ता के रूप में किसानों की सेवा में काम कर रहे हैं।",
+                    popularity: "पंजाब डख ने अपनी सटीक और सरल भविष्यवाणी के कारण किसानों में अत्यधिक लोकप्रियता हासिल की है। यह सेवा स्थानीय भाषा में मौसम पूर्वानुमान देने के लिए व्हाट्सएप का उपयोग करती है, जिससे किसानों को समझने में आसानी होती है। जबकि कई किसान पारंपरिक मौसम पूर्वानुमान में उपयोग किए जाने वाले जटिल तकनीकी शब्दों का अर्थ समझने के लिए संघर्ष कर रहे हैं, पंजाब डख सरल भाषा का उपयोग करते हैं, जिससे उन्हें आगामी मौसम की घटनाओं के लिए तैयारी करना आसान होता है।",
+                    videoHeader: "अधिक जानकारी के लिए नीचे दिए गए लिंक पर जाएं"
+                },
+                english: {
+                    heading: "Relief for Farmers - New Weather Forecast by Panjabrao Dakh",
+                    intro: "With the constant impact of unpredictable weather patterns on farmers, a new method of weather forecasting has emerged which is proving promising for thousands of farmers in Maharashtra. Panjabrao Dakh's weather forecasting service has surpassed the traditional methods of the Indian Meteorological Department with its accurate predictions, making a significant impact on the state.",
+                    details: "Panjabrao Dakh from Gughli Dhamangaon in Parbhani district of Maharashtra has become famous for his accurate weather forecasts. He has helped farmers in the state prepare for rains and protect their crops from damage. Panjabrao Dakh was partially working as a teacher in a district council school in Parbhani. Now, he works full-time as a weather forecaster serving farmers.",
+                    popularity: "Panjabrao Dakh has gained immense popularity among farmers due to his accurate and straightforward predictions. This service uses WhatsApp to provide weather forecasts in the local language, making it easier for farmers to understand. While many farmers struggle to understand the complex technical terms used in traditional weather forecasts, Panjabrao Dakh uses simple language, making it easier for them to prepare for upcoming weather events.",
+                    videoHeader: "For more information, please visit the below link."
+                }
+            };
+
+            document.getElementById('heading').textContent = translations[language].heading;
+            document.getElementById('intro').textContent = translations[language].intro;
+            document.getElementById('details').textContent = translations[language].details;
+            document.getElementById('popularity').textContent = translations[language].popularity;
+            document.getElementById('video-header').textContent = translations[language].videoHeader;
+        }
+    </script>
 </body>
-</html> 
+</html>

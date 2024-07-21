@@ -125,6 +125,59 @@
     color: darkblue;
 }
 
+/* Style for language switcher */
+.language-switcher {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.language-switcher button {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.language-switcher button:hover {
+    background-color: #ddd;
+}
+
+/* Style for video section */
+.video-section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.video-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.video-item {
+    flex: 1;
+    max-width: 300px;
+    margin: 0 10px;
+}
+
+.video-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.video-item img:hover {
+    transform: scale(1.05);
+}
 footer {
     margin-top: 20px;
     background-color: #86a884;

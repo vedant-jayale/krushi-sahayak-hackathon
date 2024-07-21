@@ -48,6 +48,10 @@ def havaman():
 def kapusvyavasthapan():
     return render_template('kapusvyavasthapan.html')
 
+@app.route('/soil-testing')
+def soiltesting():
+    return render_template('soil-testing.html')
+
 
 @app.route('/get_prices', methods=['GET', 'POST'])
 def get_prices():

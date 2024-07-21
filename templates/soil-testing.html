@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='soil-testing.css') }}">
+    <title>कृषी सहायक</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="navbar-brand">
+                <img src="{{ url_for('static', filename='krushi bajar smiti -logo.jpeg') }}" alt="Krushi Utnnapa Bajar Amiti Logo" class="logo">
+                <span class="brand-text">कृषी सहायक</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">मुख्य पृष्ठ</a></li>
+                <li><a href="/about">माहिती</a></li>
+                <li><a href="/sahayata">कृषी सहायता</a></li>
+                <li><a href="/FAQ">प्रश्न-उत्तर</a></li>
+                <!-- Add more links as needed -->
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Highlight active navbar item
+        const currentLocation = location.pathname;
+        const menuItems = document.querySelectorAll('.nav-links li a');
+
+        menuItems.forEach(menuItem => {
+            if (menuItem.getAttribute('href') === currentLocation) {
+                menuItem.parentElement.classList.add('active');
+            }
+        });
+    </script>
+
+    <div class="container">
+        <div class="language-switcher">
+            <button onclick="switchLanguage('hindi')">हिंदी</button>
+            <button onclick="switchLanguage('marathi')">मराठी</button>
+        </div>
+
+        <div id="content-hindi" class="content">
+            <h1>मिट्टी परीक्षण जानकारी</h1>
+            <p>मिट्टी परीक्षण कृषि के लिए एक महत्वपूर्ण प्रक्रिया है जो मिट्टी की गुणवत्ता और पौष्टिकता को जानने में मदद करती है। यह जानकारी फसल की सही वृद्धि और उत्पादन में मदद करती है।</p>
+            
+            <div class="faq-section">
+                <h2>प्रश्न और उत्तर</h2>
+                <div class="faq-item">
+                    <h3>मिट्टी की जांच कैसे करें?</h3>
+                    <p>मिट्टी की जांच करने के लिए, नमूना लेना महत्वपूर्ण है। नमूना लेने के लिए एक साफ और सूखी जगह चुनें। लगभग 6 इंच गहरी मिट्टी खोदें और एक साफ पात्र में मिट्टी रखें। लिए गए विभिन्न स्थानों के नमूनों को एक साथ मिलाकर एक समान मिश्रण तैयार करें। यह मिश्रण आपको मिट्टी की सभी स्थितियों का विश्लेषण करने में मदद करेगा। आपको स्थानीय कृषि विज्ञान केंद्र या पेशेवर प्रयोगशाला में अपने मिट्टी के नमूने भेजने होंगे। उस प्रयोगशाला के विशेषज्ञ नमूनों का विश्लेषण करके उचित रिपोर्ट देंगे।</p>
+                </div>
+                <div class="faq-item">
+                    <h3>मिट्टी की जांच कब करें?</h3>
+                    <p>मिट्टी की जांच फसल लगाने से पहले करना सबसे अच्छा होता है ताकि आपको मिट्टी की पौष्टिकता का सही समय पर पता चल सके।</p>
+                </div>
+                <div class="faq-item">
+                    <h3>मिट्टी की जांच कहां से करें?</h3>
+                    <p>आप स्थानीय कृषि विज्ञान केंद्र या निजी लैब से मिट्टी की जांच करा सकते हैं। इसके अलावा, कई सरकारी योजनाएं भी मिट्टी परीक्षण की सुविधा प्रदान करती हैं।</p>
+                </div>
+                <div class="faq-item">
+                    <h3>मिट्टी की जांच क्यों कराना जरूरी है?</h3>
+                    <p>मिट्टी की जांच से आप जान सकते हैं कि आपकी मिट्टी में कौन-कौन से पोषक तत्व मौजूद हैं और किस तत्व की कमी है। इससे आपको सही उर्वरक और पोषक तत्व देने में मदद मिलती है।</p>
+                </div>
+            </div>
+
+            <div class="video-header">
+                <h2>अधिक जानकारी के लिए नीचे दिए गए वीडियो देखें</h2>
+            </div>
+             
+            <div class="videos">
+                <div class="video-item">
+                    <a href="https://www.youtube.com/watch?v=rgW4mOf4a1g" target="_blank">
+                        <div class="video-thumbnail">
+                            <img src="{{ url_for('static', filename='mati-parikshanvdo2.jpeg') }}" alt="Soil Testing Video 1">
+                            <div class="play-icon">
+                                <img src="{{ url_for('static', filename='video-icon.webp') }}" alt="Play Video">
+                            </div>
+                        </div>
+                        <p>मिट्टी परीक्षण वीडियो 1</p>
+                    </a>
+                </div>
+                <div class="video-item">
+                    <a href="https://www.youtube.com/watch?app=desktop&v=uz8IWDgfNWI" target="_blank">
+                        <div class="video-thumbnail">
+                            <img src="{{ url_for('static', filename='mati-parikshanvdo1.jpeg') }}" alt="Soil Testing Video 2">
+                            <div class="play-icon">
+                                <img src="{{ url_for('static', filename='video-icon.webp') }}" alt="Play Video">
+                            </div>
+                        </div>
+                        <p>मिट्टी परीक्षण वीडियो 2</p>
+                    </a>
+                </div>
+                <div class="video-item">
+                    <a href="https://www.youtube.com/playlist?list=PL_fEi6pdr_fVsXd1Tq15WGaKdxt8j0Bjk" target="_blank">
+                        <div class="video-thumbnail">
+                            <img src="{{ url_for('static', filename='mati-parikshanvdo3.jpeg') }}" alt="Soil Testing Video 3">
+                            <div class="play-icon">
+                                <img src="{{ url_for('static', filename='video-icon.webp') }}" alt="Play Video">
+                            </div>
+                        </div>
+                        <p>मिट्टी परीक्षण वीडियो 3</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="content-marathi" class="content">
+            <h1>माती परीक्षण माहिती</h1>
+            <p>माती परीक्षण हे कृषीसाठी एक महत्त्वाचे प्रक्रिया आहे ज्यामुळे मातीची गुणवत्ता आणि पोषणतता जाणून घेण्यात मदत होते. हे  पिकाच्या योग्य वाढ आणि उत्पादनात मदत करते.</p>
+            
+            <div class="faq-section">
+                <h2>प्रश्न आणि उत्तरे</h2>
+                <div class="faq-item">
+                    <h3>मातीची तपासणी कशी करावी?</h3>
+                    <p>मातीची तपासणी करण्यासाठी, नमुना घेणे महत्त्वाचे आहे. नमुना घेण्यासाठी एक स्वच्छ आणि कोरडी जागा निवडा. सुमारे 6 इंच खोल माती खणून एक स्वच्छ पात्रात माती ठेवा.घेतलेल्या विविध स्थानांचे नमुने एकत्र करून एकसारखे मिश्रण तयार करा. हे मिश्रण आपल्याला मातीच्या सर्वसमावेशक परिस्थितीचे विश्लेषण करण्यात मदत करेल.आपल्याला स्थानिक कृषी विज्ञान केंद्र किंवा व्यावसायिक प्रयोगशाळेत आपल्या मातीचे नमुने पाठवावे लागतील. त्या प्रयोगशाळेतील तज्ज्ञ नमुन्यांचे विश्लेषण करून योग्य अहवाल देतील.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>मातीची तपासणी कधी करावी?</h3>
+                    <p>मातीची तपासणी पिक लावण्यापूर्वी करणे सर्वोत्तम असते जेणेकरून तुम्हाला मातीची पोषणतता योग्य वेळी कळू शकेल.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>मातीची तपासणी कोठून करावी?</h3>
+                    <p>तुम्ही स्थानिक कृषी विज्ञान केंद्र किंवा खाजगी लॅबमधून मातीची तपासणी करू शकता. याशिवाय, अनेक सरकारी योजना माती परीक्षणाची सुविधा देखील प्रदान करतात.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>मातीची तपासणी का करणे आवश्यक आहे?</h3>
+                    <p>मातीची तपासणीमुळे तुम्हाला तुमच्या मातीमध्ये कोणते पोषक तत्व आहेत आणि कोणत्या तत्वाची कमतरता आहे हे कळते. यामुळे तुम्हाला योग्य खत आणि पोषक तत्व देण्यात मदत होते.</p>
+                </div>
+            </div>
+
+            <div class="video-header">
+                <h2>अधिक माहितीसाठी खालील व्हिडिओ पाहा</h2>
+            </div>
+
+            <div class="videos">
+                <div class="video-item">
+                    <a href="https://www.youtube.com/watch?v=7PD1JQXQCOA" target="_blank">
+                        <div class="video-thumbnail">
+                            <img src="{{ url_for('static', filename='mati-parikshanvdo5.jpg') }}" alt="माती परीक्षण वीडियो 1">
+                            <div class="play-icon">
+                                <img src="{{ url_for('static', filename='video-icon.webp') }}" alt="Play Video">
+                            </div>
+                        </div>
+                        <p>माती परीक्षण वीडियो 1</p>
+                    </a>
+                </div>
+                <div class="video-item">
+                    <a href="https://www.youtube.com/watch?app=desktop&v=BPDm7arhYlk" target="_blank">
+                        <div class="video-thumbnail">
+                            <img src="{{ url_for('static', filename='mati-parikshanvdo4.jpg') }}" alt="माती परीक्षण वीडियो 2">
+                            <div class="play-icon">
+                                <img src="{{ url_for('static', filename='video-icon.webp') }}" alt="Play Video">
+                            </div>
+                        </div>
+                        <p>माती परीक्षण वीडियो 2</p>
+                    </a>
+                </div>
+                <div class="video-item">
+                    <a href="https://www.youtube.com/watch?v=ekztQhuKg5U" target="_blank">
+                        <div class="video-thumbnail">
+                            <img src="{{ url_for('static', filename='mati-parikshanvdo6.jpg') }}" alt="माती परीक्षण वीडियो 3">
+                            <div class="play-icon">
+                                <img src="{{ url_for('static', filename='video-icon.webp') }}" alt="Play Video">
+                            </div>
+                        </div>
+                        <p>माती परीक्षण वीडियो 3</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchLanguage(language) {
+            var hindiContent = document.getElementById('content-hindi');
+            var marathiContent = document.getElementById('content-marathi');
+
+            if (language === 'hindi') {
+                hindiContent.style.display = 'block';
+                marathiContent.style.display = 'none';
+            } else {
+                hindiContent.style.display = 'none';
+                marathiContent.style.display = 'block';
+            }
+        }
+
+        // Default to Marathi content
+        switchLanguage('marathi');
+    </script>
+
+<footer>
+    <div class="footer-container">
+        <div class="contact-info">
+            <h3>संपर्क माहिती:</h3>
+            <p>Mobile Number: 987654321x</p>
+            <p>Email: contact@krushisahayak.com</p>
+        </div>
+        <div class="links">
+            <h3>Quick Links:</h3>
+            <ul>
+              
+                <li><a href="/about">माहिती</a></li>
+                <li><a href="/sahayata">कृषी सहायता</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
