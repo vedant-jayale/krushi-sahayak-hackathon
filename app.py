@@ -71,10 +71,7 @@ def get_prices():
         district_name = request.form['district_name']
         market_name = request.form['market_name']
 
-        url = (f"https://agmarknet.gov.in/SearchCmmMkt.aspx?"
-               f"Tx_Commodity={commodity}&Tx_State={state}&Tx_District={district}&Tx_Market={market}"
-               f"&DateFrom={date_from}&DateTo={date_to}&Fr_Date={date_from}&To_Date={date_to}&Tx_Trend=0"
-               f"&Tx_CommodityHead={commodity_name}&Tx_StateHead={state_name}&Tx_DistrictHead={district_name}&Tx_MarketHead={market_name}")
+        url = ({apilink})  
 
         response = requests.get(url)
         soup = BeautifulSoup(response.content, 'html.parser')
